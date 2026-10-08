@@ -1,0 +1,18 @@
+name: Feature idea
+description: Suggest something useful for trainers.
+title: '[Idea] '
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What would this help a trainer do?
+      description: Describe the problem or missing experience.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Your idea
+      description: Sketch the interaction or share a reference.
+    validations:
+      required: true

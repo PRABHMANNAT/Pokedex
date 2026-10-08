@@ -1,0 +1,23 @@
+name: Bug report
+description: Help us fix a broken encounter.
+title: '[Bug] '
+body:
+  - type: textarea
+    id: steps
+    attributes:
+      label: What happened?
+      description: Include the URL, selected filters, steps to reproduce, and expected behavior.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and device
+      placeholder: Chrome on Android, Safari on macOS, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or console errors
+      description: Optional. Please remove personal information.
