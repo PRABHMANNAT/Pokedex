@@ -2,6 +2,7 @@ import { ArrowUpRight, Heart } from 'lucide-react';
 import { dexNumber, formatName, TYPES } from '../lib/pokemon';
 import PokemonImage from './PokemonImage';
 import TypeBadge from './TypeBadge';
+import TeamAddButton from './TeamAddButton';
 
 export default function PokemonCard({ pokemon, favorite, onFavorite, onOpen, shiny }) {
   const [color] = TYPES[pokemon.types[0]];
@@ -51,6 +52,7 @@ export default function PokemonCard({ pokemon, favorite, onFavorite, onOpen, shi
           ))}
         </div>
       </button>
+      <TeamAddButton memberKey={String(pokemon.id)} compact />
     </article>
   );
 }

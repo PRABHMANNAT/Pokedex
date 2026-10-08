@@ -18,6 +18,7 @@ import Filters from './Filters';
 import Hero from './Hero';
 import PokemonCard from './PokemonCard';
 import PokemonDialog from './PokemonDialog';
+import TeamTeaser from './TeamTeaser';
 
 const PAGE_SIZE = 24;
 export default function PokemonList({ favorites, toggleFavorite }) {
@@ -79,6 +80,7 @@ export default function PokemonList({ favorites, toggleFavorite }) {
   return (
     <main className="page-shell">
       <Hero onRandom={random} />
+      <TeamTeaser />
       <section id="pokedex" className="catalog-section" aria-labelledby="catalog-title">
         <div className="catalog-intro">
           <div>

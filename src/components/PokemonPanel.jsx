@@ -6,6 +6,7 @@ import { defensiveMatchups, dexNumber, formatName, REGIONS, TYPES } from '../lib
 import PokemonImage from './PokemonImage';
 import Stats from './Stats';
 import TypeBadge from './TypeBadge';
+import TeamAddButton from './TeamAddButton';
 
 export default function PokemonPanel({ pokemon, favorite, onFavorite, onNavigate }) {
   const [shiny, setShiny] = useState(false);
@@ -53,6 +54,7 @@ export default function PokemonPanel({ pokemon, favorite, onFavorite, onNavigate
         >
           <Sparkles size={15} /> {shiny ? 'Shiny artwork' : 'Show shiny'}
         </button>
+        <TeamAddButton memberKey={String(pokemon.id)} />
       </div>
       <div className="panel-info">
         <div className="panel-title">

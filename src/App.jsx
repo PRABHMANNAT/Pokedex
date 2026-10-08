@@ -1,20 +1,28 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import { Github, Heart } from 'lucide-react';
+import { Github, Heart, X } from 'lucide-react';
 import Header from './components/Header';
 import PokemonList from './components/PokemonList';
 import PokemonDetail from './components/PokemonDetail';
 import useFavorites from './hooks/useFavorites';
 import useTheme from './hooks/useTheme';
+import useTeams from './hooks/useTeams';
+import { TeamContext } from './context/TeamContext';
+import TeamBuilder from './components/TeamBuilder';
+import DeveloperPicks from './components/DeveloperPicks';
 import { REPOSITORY } from './lib/pokemon';
 import './App.css';
 import './styles/catalog.css';
 import './styles/detail.css';
 import './styles/responsive.css';
+import './styles/teams.css';
+import './styles/team-responsive.css';
 
 export default function App() {
   const { theme, toggleTheme } = useTheme();
   const { favorites, toggleFavorite } = useFavorites();
+  const teams = useTeams();
   return (
+    <TeamContext.Provider value={teams}>
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <a className="skip-link" href="#main-content">
         Skip to content
@@ -22,6 +30,8 @@ export default function App() {
       <Header theme={theme} toggleTheme={toggleTheme} />
       <div id="main-content">
         <Routes>
+          <Route path="/teams" element={<TeamBuilder />} />
+          <Route path="/picks" element={<DeveloperPicks />} />
           <Route
             path="/"
             element={<PokemonList favorites={favorites} toggleFavorite={toggleFavorite} />}
@@ -55,6 +65,8 @@ export default function App() {
           <Github size={16} /> View source <span>↗</span>
         </a>
       </footer>
+      {teams.notice && <div className="team-toast" role="status"><span className="pokeball-mark" aria-hidden="true" /><span>{teams.notice}</span><button className="icon-button" aria-label="Dismiss team notification" onClick={() => teams.setNotice('')}><X size={16} /></button></div>}
     </BrowserRouter>
+    </TeamContext.Provider>
   );
 }

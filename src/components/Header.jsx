@@ -1,9 +1,12 @@
-import { ArrowUpRight, Github, Star } from 'lucide-react';
+import { ArrowUpRight, Github, Star, Users } from 'lucide-react';
+import { useContext } from 'react';
+import { TeamContext } from '../context/TeamContext';
 import { Link } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { REPOSITORY } from '../lib/pokemon';
 
 export default function Header({ theme, toggleTheme }) {
+  const {activeTeam} = useContext(TeamContext);
   return (
     <header className="site-header">
       <div className="header-inner">
@@ -25,6 +28,7 @@ export default function Header({ theme, toggleTheme }) {
           <Link className="nav-link" to="/">
             Explore the Pokédex
           </Link>
+          <Link className="teams-nav" to="/teams"><Users size={15} /><span>My team</span><small>{activeTeam.members.length}/6</small></Link>
           <span className="header-divider" />
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <a className="github-button" href={REPOSITORY} target="_blank" rel="noreferrer">
