@@ -1,0 +1,65 @@
+import catalog from './catalog.json' with { type: 'json' };
+import { formatName } from '../lib/pokemon.js';
+
+// Transcribed from Prabhmannat's supplied 15-page team sheet. Preserve its region
+// groupings (including cross-generation picks), forms, and shiny preferences.
+// The six-member templates are editable selections from these larger lists.
+const entry = (id, label, artworkId = id, shiny = false, note = '') => ({ id, label, artworkId, shiny, note });
+const groups = [
+  { id: 'kanto', name: 'Kanto', generation: 1, pages: [1], starter: [10034, 10036, 10038, 130, 143, 151], picks: [
+    entry(151), entry(4), entry(5), entry(6), entry(6, 'Mega Charizard X', 10034),
+    entry(8), entry(9), entry(9, 'Mega Blastoise', 10036), entry(31), entry(143),
+    entry(18), entry(18, 'Mega Pidgeot', 10073), entry(68), entry(93), entry(94),
+    entry(94, 'Mega Gengar', 10038), entry(130, 'Shiny Gyarados', 130, true),
+    entry(130, 'Shiny Mega Gyarados', 10041, true), entry(131), entry(141), entry(142), entry(144), entry(145),
+  ] },
+  { id: 'johto', name: 'Johto', generation: 2, pages: [2], starter: [160, 157, 10049, 10072, 245, 249], picks: [
+    entry(158), entry(159), entry(160), entry(241), entry(156), entry(157), entry(248),
+    entry(248, 'Mega Tyranitar', 10049), entry(208), entry(208, 'Mega Steelix', 10072), entry(171), entry(245), entry(249),
+  ] },
+  { id: 'hoenn', name: 'Hoenn', generation: 3, pages: [3, 4], starter: [10050, 10064, 10076, 10089, 384, 365], picks: [
+    entry(380), entry(381), entry(306), entry(272), entry(257), entry(257, 'Mega Blaziken', 10050),
+    entry(348), entry(362), entry(260), entry(260, 'Mega Swampert', 10064), entry(295), entry(376),
+    entry(376, 'Mega Metagross', 10076), entry(365), entry(373), entry(373, 'Mega Salamence', 10089),
+    entry(342), entry(384, 'Shiny Rayquaza', 384, true), entry(384, 'Shiny Mega Rayquaza', 10079, true), entry(321),
+  ] },
+  { id: 'sinnoh', name: 'Sinnoh', generation: 4, pages: [5, 6], starter: [10059, 10068, 395, 466, 10006, 491], picks: [
+    entry(447), entry(448), entry(448, 'Mega Lucario', 10059), entry(410), entry(411), entry(409), entry(473), entry(491),
+    entry(475), entry(475, 'Mega Gallade', 10068), entry(479, 'Rotom'), entry(462), entry(492, 'Shaymin · Sky Forme', 10006),
+    entry(395), entry(486), entry(466),
+  ] },
+  { id: 'unova', name: 'Unova', generation: 5, pages: [7], starter: [530, 571, 567, 625, 635, 645], picks: [
+    entry(499), entry(526), entry(530), entry(527), entry(563), entry(564), entry(565), entry(566), entry(567), entry(570),
+    entry(571), entry(601), entry(613), entry(614), entry(625), entry(623, 'Giant Golurk', 623, false, 'Anime-sized depiction; standard Golurk data.'),
+    entry(626), entry(634), entry(635), entry(645, 'Landorus · Incarnate Forme'),
+  ] },
+  { id: 'kalos', name: 'Kalos', generation: 6, pages: [8], starter: [663, 675, 652, 697, 715, 10120], picks: [
+    entry(663), entry(674), entry(675), entry(652), entry(696), entry(697), entry(698), entry(699), entry(715),
+    entry(649, 'Shiny Genesect', 649, true), entry(718, 'Zygarde · Complete Forme', 10120),
+  ] },
+  { id: 'alola', name: 'Alola', generation: 7, pages: [9, 10], starter: [807, 10102, 738, 768, 809, 791], picks: [
+    entry(807), entry(723), entry(738), entry(28, 'Alolan Sandslash', 10102), entry(781), entry(768),
+    entry(773), entry(733), entry(808), entry(809), entry(789), entry(790), entry(791), entry(803), entry(804),
+    entry(771), entry(74, 'Alolan Geodude', 10109), entry(794), entry(799),
+  ] },
+  { id: 'galar', name: 'Galar / Hisui', generation: 8, pages: [11, 12], starter: [823, 834, 901, 865, 879, 892], picks: [
+    entry(811), entry(822), entry(823), entry(834), entry(901), entry(866), entry(890), entry(883), entry(865, 'Sirfetch’d'),
+    entry(884), entry(893), entry(879), entry(838), entry(839), entry(892, 'Urshifu · Single Strike'),
+  ] },
+  { id: 'paldea', name: 'Paldea', generation: 9, pages: [14, 15], starter: [977, 998, 979, 984, 1005, 1003], picks: [
+    entry(910), entry(941), entry(977), entry(965), entry(966), entry(991), entry(998), entry(967), entry(979),
+    entry(923), entry(1005), entry(984), entry(994), entry(1003, 'Ting-Lu'),
+  ] },
+  { id: 'gigantamax', name: 'Gigantamax', generation: null, pages: [13], starter: [10206, 10225, 10201, 10224, 10214, 10208], picks: [
+    entry(143, 'Gigantamax Snorlax', 10206), entry(884, 'Gigantamax Duraludon', 10225), entry(68, 'Gigantamax Machamp', 10201),
+    entry(879, 'Gigantamax Copperajah', 10224), entry(834, 'Gigantamax Drednaw', 10214), entry(809, 'Gigantamax Melmetal', 10208),
+    entry(823, 'Gigantamax Corviknight', 10212), entry(131, 'Gigantamax Lapras', 10204), entry(94, 'Gigantamax Gengar', 10202),
+  ] },
+];
+
+export const DEVELOPER_GROUPS = groups.map(group => ({
+  ...group,
+  picks: group.picks.map(pick => ({ ...pick, key: `${group.id}-${pick.artworkId}${pick.shiny ? '-shiny' : ''}`, label: pick.label || formatName(catalog.find(p => p.id === pick.id).name) })),
+}));
+export const DEVELOPER_PICKS = DEVELOPER_GROUPS.flatMap(group => group.picks);
+export function starterKeys(group) { return group.starter.map(id => group.picks.find(pick => pick.artworkId === id).key); }
