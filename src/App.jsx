@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import { Github, Heart, X } from 'lucide-react';
+import { ArrowUpRight, Github, Heart, X } from 'lucide-react';
 import Header from './components/Header';
 import useFavorites from './hooks/useFavorites';
 import useTheme from './hooks/useTheme';
@@ -14,6 +14,7 @@ import './styles/responsive.css';
 import './styles/teams.css';
 import './styles/team-responsive.css';
 import './styles/team-gallery.css';
+import './styles/footer.css';
 
 const TeamBuilder = lazy(() => import('./components/TeamBuilder'));
 const TeamGallery = lazy(() => import('./components/TeamGallery'));
@@ -67,23 +68,33 @@ export default function App() {
           </Suspense>
         </div>
         <footer className="site-footer">
-          <div>
-            <span className="footer-brand">pokédex.</span>
-            <span>
-              <span className="maker-credit">
-                Made by{' '}
-                <a href="https://github.com/PRABHMANNAT" target="_blank" rel="noreferrer">
-                  Prabhmannat Singh
-                </a>
-                <small>
-                  With a lot of time, care, and love <Heart size={11} />
-                </small>
-              </span>
+          <Link className="footer-brand" to="/">
+            pokédex<span>.</span>
+          </Link>
+          <div className="maker-credit">
+            <span className="maker-label">
+              <span className="pokeball-mark" aria-hidden="true" /> MADE BY A POKÉMON TRAINER
             </span>
+            <a href="https://github.com/PRABHMANNAT" target="_blank" rel="noreferrer">
+              Prabhmannat Singh
+            </a>
+            <small>
+              With a lot of time, care, and love <Heart size={11} />
+            </small>
           </div>
           <p>An independent fan project. Pokémon © Nintendo / Creatures / GAME FREAK.</p>
-          <a href={REPOSITORY} target="_blank" rel="noreferrer">
-            <Github size={16} /> View source <span>↗</span>
+          <a
+            className="footer-source"
+            href={REPOSITORY}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="View source on GitHub"
+          >
+            <span className="footer-source-icon">
+              <Github size={16} />
+            </span>
+            <span>View source</span>
+            <ArrowUpRight size={14} />
           </a>
         </footer>
         {teams.notice && (
