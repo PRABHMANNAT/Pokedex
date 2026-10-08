@@ -1,6 +1,14 @@
 import { ArrowDown, ArrowUpRight, Shuffle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import catalog from '../data/catalog.json';
+import { FEATURED_STORAGE_KEY, selectFeatured } from '../lib/featured';
+import { readStored, writeStored } from '../lib/storage';
+import PokemonImage from './PokemonImage';
+
+// Choose once per page load, not per render or route visit. Keeping this outside
+// React's initializer also avoids double selection in development StrictMode.
+const featured = selectFeatured(readStored(FEATURED_STORAGE_KEY, null, Number.isInteger));
+writeStored(FEATURED_STORAGE_KEY, featured.id);
 
 export default function Hero({ onRandom }) {
   const base = import.meta.env.BASE_URL;
@@ -47,13 +55,18 @@ export default function Hero({ onRandom }) {
           </span>
         </div>
       </div>
-      <Link to="/?pokemon=6" className="hero-art" aria-label="Meet Charizard">
+      <Link
+        to={`/?pokemon=${featured.id}`}
+        className="hero-art"
+        aria-label={`Meet ${featured.name}`}
+        data-pokemon-id={featured.id}
+      >
         <span className="hero-art-grid" />
         <span className="hero-art-orbit" />
         <span className="hero-japanese" aria-hidden="true">
-          リザードン
+          {featured.japanese}
         </span>
-        <span className="art-label">FIELD NOTES / NO. 0006</span>
+        <span className="art-label">FIELD NOTES / NO. {String(featured.id).padStart(4, '0')}</span>
         <img
           className="pokemon-wordmark"
           src={`${base}brand/pokemon-logo.svg`}
@@ -62,19 +75,12 @@ export default function Hero({ onRandom }) {
           height="30"
         />
         <span className="hero-art-stage">
-          <img
-            className="hero-charizard"
-            src={`${base}brand/charizard.png`}
-            alt="Official Charizard artwork"
-            width="475"
-            height="475"
-            fetchPriority="high"
-          />
+          <PokemonImage className="hero-pokemon" id={featured.id} name={featured.name} eager />
         </span>
         <span className="hero-art-bottom">
           <span>
-            <strong>Charizard</strong>
-            <small>THE FLAME POKÉMON</small>
+            <strong>{featured.name}</strong>
+            <small>THE {featured.genus.toUpperCase()}</small>
           </span>
           <span className="hero-art-arrow">
             <ArrowUpRight size={21} />
