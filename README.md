@@ -6,8 +6,9 @@
 
 **Little creatures. Endless discovery.**
 
-A thoughtfully crafted window into the world of Pokémon.<br />
-Warm paper, official artwork, and 1,025 new reasons to explore.
+A Pokémon field guide for collectors, curious trainers, and your next favorite team.<br />
+Explore 1,025 Pokémon. Build your six. Discover every generation.<br />
+Warm paper by day, charcoal by night — with original Pokémon artwork throughout.
 
 [![Quality checks](https://github.com/PRABHMANNAT/Pokedex/actions/workflows/ci.yml/badge.svg)](https://github.com/PRABHMANNAT/Pokedex/actions/workflows/ci.yml)
 [![Stars](https://img.shields.io/github/stars/PRABHMANNAT/Pokedex?style=flat&color=ce5542&label=Stars)](https://github.com/PRABHMANNAT/Pokedex/stargazers)
@@ -64,9 +65,15 @@ Teams save **only in your browser**, without an account. Share links include the
 
 [Team builder & data notes](docs/TEAMS.md)
 
-Browse every regional starter team together in the **team collection**, then filter Prabh’s templates or your browser-saved lineups by generation. The editor’s team selector now offers every region directly, while keeping your edited copies intact.
+Browse every regional starter team together in the **team collection**, then filter Prabh’s templates or your browser-saved lineups by generation. Jump between regions directly from the editor without losing changes to your saved copies.
+
+The collection gives each lineup room to breathe: larger artwork, wide two-column previews, and a full-width showcase when a filter returns one team. A Poké Ball archive scan introduces the collection, while a trainer-style back button takes you straight to the builder. Animations respect reduced-motion preferences, and previews adapt to smaller screens.
 
 <img src="docs/images/team-collection.png" alt="All-generation team collection with creator and generation filters, six-member previews and editable local copies" width="100%" />
+
+<img src="docs/images/team-focus.png" alt="Full-width Kanto team showcase with large artwork for Mega Charizard X, Mega Blastoise, Mega Gengar, shiny Gyarados, Snorlax and Mew" width="100%" />
+
+<sub>One region in focus. Six favorites, side by side. Real screenshots from the app.</sub>
 
 <img src="docs/images/mobile-team.png" alt="The six-slot team editor on a pocket-sized mobile screen" width="280" />
 
@@ -97,7 +104,7 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-The browser suite covers discovery, filters, collection persistence, themes, modal focus, direct routes, network failure, team editing, lead ordering, sharing, storage failures, developer presets, and mobile layouts.
+The browser suite covers discovery, filters, collection persistence, themes, modal focus, direct routes, network failure, team editing, lead ordering, sharing, storage failures, developer presets, collection filters, responsive team previews, and reduced-motion behavior. **17 unit tests and 20 browser journeys** run in GitHub’s quality checks.
 
 ## Under the cover
 
@@ -107,9 +114,9 @@ The complete catalog ships with the app, so filters and statistics don't require
 
 ```text
 src/
-  components/      Explorer, cards, filters, field notes, and theme controls
-  hooks/           Persistent collection and theme state
-  data/            Generated national index and type chart
+  components/      Explorer, field notes, team builder, collection, and notebook
+  hooks/           Persistent teams, favorites, and theme state
+  data/            National index, type chart, and curated developer picks
   lib/             Search, formatting, storage, and matchup helpers
   styles/          Catalog, details, and responsive layouts
 scripts/           Catalog refresh and real screenshot capture

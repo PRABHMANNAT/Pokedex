@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "A beautifully crafted Pokémon field guide with 1,025 entries, login-free teams, developer favorites, shiny artwork and type filters.",
+  "description": "A Pokémon field guide with 1,025 Pokémon, login-free team building, all-generation team showcases, shiny artwork, type filters, and day/night themes. Built with React and Vite.",
   "repository": {
     "type": "git",
     "url": "https://github.com/PRABHMANNAT/Pokedex.git"
