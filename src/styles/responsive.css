@@ -1,0 +1,119 @@
+@media (max-width: 1320px) {
+  .header-inner, .page-shell, .site-footer { margin-left: 40px; margin-right: 40px; }
+  .pokemon-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hero { gap: 35px; }
+  .hero-charizard { right: 40px; }
+}
+@media (min-width: 1600px) { .page-shell, .header-inner, .site-footer { max-width: 1320px; } }
+@media (max-width: 1000px) {
+  .header-inner, .page-shell, .site-footer { margin-left: 25px; margin-right: 25px; }
+  .hero { gap: 25px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.8px; }
+  .hero .eyebrow { font-size: 8px; letter-spacing: 1.3px; }
+  .hero-copy > p { font-size: 12px; }
+  .hero-art { min-height: 320px; }
+  .hero-charizard { width: 285px; height: 285px; right: 15px; top: 0; }
+  .hero-actions { gap: 9px; }
+  .hero-actions .button { font-size: 11px; padding: 12px; gap: 7px; }
+  .hero-facts { gap: 13px; font-size: 10px; }
+  .catalog-layout { grid-template-columns: 174px minmax(0, 1fr); gap: 20px; }
+  .filters { padding-right: 17px; }
+  .type-filter { font-size: 9px; gap: 4px; padding: 7px 5px; }
+  .pokemon-grid { gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .catalog-tabs { gap: 12px; }
+  .catalog-tabs button { font-size: 10px; gap: 5px; }
+  .site-footer { flex-wrap: wrap; }
+  .site-footer > p { order: 3; width: 100%; text-align: center; }
+}
+@media (max-width: 700px) {
+  .header-inner, .page-shell, .site-footer { margin-left: 20px; margin-right: 20px; }
+  .header-inner { padding: 16px 0; }
+  .brand { font-size: 23px; gap: 8px; }
+  .brand small { font-size: 6px; letter-spacing: 1.2px; }
+  .brand-icon { width: 36px; height: 36px; }
+  .brand-icon img { width: 28px; height: 28px; }
+  .nav-link, .header-divider { display: none; }
+  .header-inner nav { gap: 15px; }
+  .github-button { padding: 9px; }
+  .github-button span, .github-button > svg:last-child { display: none; }
+  .theme-toggle > svg { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 35px 0 28px; gap: 27px; }
+  .hero .eyebrow { font-size: 8px; }
+  .hero h1 { font-size: 40px; margin-top: 16px; }
+  .hero-copy > p { font-size: 12px; }
+  .hero-actions { gap: 12px; margin-top: 22px; }
+  .hero-actions .button { padding: 13px 15px; font-size: 12px; }
+  .hero-facts { margin-top: 24px; gap: 18px; }
+  .hero-art { min-height: 265px; max-height: 265px; }
+  .hero-charizard { width: 265px; height: 265px; top: -15px; right: calc(50% - 125px); }
+  .hero-art-orbit { width: 215px; height: 215px; right: calc(50% - 110px); top: 5px; }
+  .hero-art-bottom { padding: 12px 20px; }
+  .hero-art-bottom strong { font-size: 20px; }
+  .hero-stamp { bottom: 83px; font-size: 7px; padding: 6px 8px; left: 15px; }
+  .hero-japanese { top: 43px; font-size: 23px; }
+  .catalog-intro h2 { font-size: 27px; }
+  .catalog-intro .eyebrow { font-size: 8px; }
+  .catalog-intro-note { font-size: 9px; }
+  .catalog-layout { display: block; }
+  .filters { border-right: 0; border-bottom: 1px solid var(--line); padding: 0 0 19px; margin-bottom: 21px; }
+  .filter-heading { height: 28px; margin-bottom: 12px; }
+  .type-filter-grid { display: flex; overflow-x: auto; padding: 3px 3px 9px; margin: 0 -3px; gap: 7px; scrollbar-width: thin; }
+  .type-filter { flex-shrink: 0; font-size: 11px; min-height: 35px; padding: 7px 10px; gap: 7px; }
+  .all-types { margin-bottom: 0; }
+  .all-types small { display: none; }
+  .filters fieldset legend, .filter-divider, .field-tip { display: none; }
+  .filter-select-label { margin-top: 13px; display: inline-block; width: 33%; font-size: 8px; margin-bottom: 0; }
+  .filters select { width: 66%; font-size: 10px; padding: 8px; margin-top: 10px; }
+  .search-row { gap: 8px; margin-bottom: 20px; }
+  .search-box { height: 47px; padding: 0 12px; gap: 9px; }
+  .search-box input { font-size: 11px; }
+  .search-box kbd { display: none; }
+  .shiny-control { font-size: 0; gap: 0; padding: 12px 14px; }
+  .shiny-control svg { width: 18px; height: 18px; }
+  .catalog-tabs button { font-size: 10px; }
+  .result-summary { font-size: 9px; }
+  .result-summary label { gap: 4px; }
+  .result-summary select { font-size: 9px; max-width: 125px; }
+  .pokemon-grid { gap: 12px; }
+  .pokemon-card { padding: 9px 11px 13px; }
+  .card-art { height: 132px; margin-bottom: 8px; }
+  .card-art img { width: 132px; height: 132px; }
+  .card-title h3 { font-size: 13px; }
+  .card-stats { gap: 7px; }
+  .card-stats strong { font-size: 9px; }
+  .type-badge { padding: 4px 6px; font-size: 9px; }
+  .pokemon-grid.compact { grid-template-columns: 1fr; }
+  .compact .card-art { width: 105px; }
+  .compact .card-title h3 { font-size: 16px; }
+  .closing-note { padding: 25px 0; }
+  .closing-note p { font-size: 10px; }
+  .closing-note .button { font-size: 9px; gap: 5px; }
+  .site-footer { padding: 22px 0; gap: 14px; }
+  .site-footer > div { gap: 10px; }
+  .site-footer > div > span:last-child { font-size: 8px; }
+  .site-footer > p { font-size: 8px; line-height: 1.7; }
+  .pokemon-panel { grid-template-columns: 1fr; }
+  .panel-art { padding: 45px 20px 17px; min-height: 295px; }
+  .panel-art > img, .panel-art > .art-fallback { width: 215px; height: 215px; }
+  .panel-art::before { width: 200px; height: 200px; }
+  .panel-art-number { top: 58px; font-size: 115px; }
+  .panel-art-meta { top: 17px; font-size: 7px; }
+  .shiny-button { margin-top: 5px; padding: 10px 16px; }
+  .panel-info { padding: 23px; }
+  .panel-title h2 { font-size: 28px; }
+  .pokemon-dialog { width: calc(100vw - 20px); max-height: calc(100dvh - 28px); }
+  .dialog-toolbar { padding: 10px 13px; }
+  .dialog-toolbar > span { font-size: 7px; letter-spacing: 1px; }
+  .detail-page { margin: 22px auto 35px; padding: 0 15px; }
+}
+@media (max-width: 370px) {
+  .header-inner, .page-shell, .site-footer { margin-left: 14px; margin-right: 14px; }
+  .hero h1 { font-size: 35px; }
+  .hero-actions { gap: 5px; }
+  .hero-actions .button { font-size: 10px; }
+  .catalog-tabs { gap: 10px; }
+  .catalog-tabs button > svg { display: none; }
+  .card-art { height: 112px; }
+  .card-art img { height: 112px; width: 112px; }
+  .card-title h3 { font-size: 12px; }
+}
