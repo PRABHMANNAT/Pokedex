@@ -1,100 +1,353 @@
 @media (max-width: 1100px) {
-  .header-inner .nav-link { display: none; }
-  .team-slots, .team-picker-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .developer-picks-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .preset-roster { flex-basis: 100%; order: 3; justify-content: flex-start; }
-  .preset-banner > .button { margin-left: auto; }
-  .slot-art { height: 155px; }
-  .slot-art img { width: 155px; height: 155px; }
-  .team-slot h3 { min-height: 0; }
+  .header-inner .nav-link {
+    display: none;
+  }
+  .team-slots,
+  .team-picker-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .developer-picks-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .preset-roster {
+    flex-basis: 100%;
+    order: 3;
+    justify-content: flex-start;
+  }
+  .preset-banner > .button {
+    margin-left: auto;
+  }
+  .slot-art {
+    height: 155px;
+  }
+  .slot-art img {
+    width: 155px;
+    height: 155px;
+  }
+  .team-slot h3 {
+    min-height: 0;
+  }
 }
 @media (max-width: 700px) {
-  .header-inner nav { gap: 10px; }
-  .teams-nav { padding: 8px; border: 1px solid var(--line); border-radius: 7px; }
-  .teams-nav > span { display: none; }
-  .teams-nav small { font-size: 8px; }
-  .github-button { padding: 7px; }
-  .github-button .github-button-icon { display: grid; width: 24px; height: 24px; }
-  .team-teaser { gap: 13px; flex-wrap: wrap; padding: 17px; margin: 12px 0 30px; }
-  .teaser-balls { gap: 4px; }
-  .teaser-balls .pokeball-mark { width: 16px; height: 16px; }
-  .team-teaser > span:nth-child(2) { flex: 1; min-width: 180px; }
-  .team-teaser strong { font-size: 12px; }
-  .team-teaser small { font-size: 9px; line-height: 1.6; }
-  .teaser-link { margin-left: 0; font-size: 11px; }
-  .team-page, .developer-page { padding-top: 30px; }
-  .team-page-intro, .picks-intro { flex-direction: column; align-items: stretch; gap: 25px; margin-bottom: 27px; }
-  .team-page h1, .developer-page h1 { font-size: 43px; letter-spacing: -2px; }
-  .team-page-intro .eyebrow { font-size: 7px; letter-spacing: 1px; }
-  .team-page-intro p, .picks-intro p { font-size: 12px; }
-  .developer-invitation { padding: 22px; }
-  .developer-invitation strong { margin-top: 14px; font-size: 24px; }
-  .team-workbench { padding: 17px; }
-  .workbench-toolbar { gap: 10px; }
-  .workbench-toolbar > div { min-width: 0; flex: 1; }
-  .workbench-toolbar select { width: 100%; font-size: 10px; }
-  .workbench-toolbar .button { padding: 11px; font-size: 10px; gap: 5px; }
-  .roster-heading { align-items: flex-start; gap: 10px; }
-  .roster-heading > div:first-child { min-width: 0; flex: 1; }
-  .roster-heading h2 { font-size: 23px; line-height: 1.2; }
-  .rename-team-form input { width: 100%; }
-  .roster-counter > span { font-size: 28px; }
-  .roster-counter { font-size: 11px; }
-  .roster-counter small { font-size: 6px; letter-spacing: .5px; }
-  .team-slots, .team-picker-grid, .developer-picks-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .team-slot { padding: 10px; }
-  .slot-art { height: 115px; }
-  .slot-art img { width: 115px; height: 115px; max-width: 100%; }
-  .team-slot h3 { min-height: 32px; font-size: 11px; }
-  .slot-bottom { flex-wrap: wrap; }
-  .empty-team-slot { min-height: 235px; }
-  .empty-team-slot strong { font-size: 10px; }
-  .empty-team-slot small { font-size: 8px; }
-  .team-insights { grid-template-columns: 1fr 1fr; gap: 18px; }
-  .team-insights > div:last-child { grid-column: 1 / -1; }
-  .team-workbench-bottom { flex-direction: column; align-items: flex-start; gap: 15px; }
-  .create-team-form { padding: 15px; }
-  .create-team-form label { width: 100%; }
-  .create-team-form input { flex-basis: 100%; }
-  .team-section-heading { gap: 8px; align-items: flex-start; }
-  .team-section-heading h2 { font-size: 23px; }
-  .team-section-heading .eyebrow { font-size: 7px; letter-spacing: 1px; }
-  .team-section-heading > span { font-size: 9px; white-space: nowrap; margin-top: 25px; }
-  .team-picker-controls { grid-template-columns: 1fr 1fr; }
-  .team-picker-controls > .search-box { grid-column: 1 / -1; }
-  .team-picker-controls select { font-size: 11px; }
-  .picker-card { padding: 12px; }
-  .picker-card h3 { font-size: 12px; }
-  .picks-count { display: flex; align-items: center; gap: 15px; padding: 15px 0; border: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .picks-count strong { font-size: 38px; letter-spacing: -2px; }
-  .region-tabs { gap: 6px; }
-  .region-tabs button { padding: 9px; font-size: 10px; }
-  .preset-banner { padding: 20px; gap: 15px; }
-  .preset-banner h2 { font-size: 21px; }
-  .preset-banner > div:first-child { width: 100%; }
-  .preset-banner > .button { order: 4; margin: 0; }
-  .preset-roster { flex-basis: 100%; justify-content: space-between; }
-  .preset-roster img { width: 43px; height: 55px; }
-  .picks-section-heading { display: block; margin-top: 30px; }
-  .picks-section-heading h2 { font-size: 20px; }
-  .developer-pick-card { padding: 12px; }
-  .developer-pick-card h3 { font-size: 12px; }
-  .pick-art { height: 125px; }
-  .pick-art img { height: 125px; width: 125px; }
-  .pick-art > span { width: 100px; height: 100px; }
-  .pick-card-top { font-size: 6px; letter-spacing: .5px; }
-  .team-toast { font-size: 10px; padding: 12px; gap: 9px; }
-  .site-footer > div { flex-wrap: wrap; }
-  .maker-credit { font-size: 10px; line-height: 1.6; }
-  .closing-note .return-button { padding: 9px; }
-  .return-button .return-ball { display: none; }
-  .hero-actions .encounter-button { padding: 10px 12px; }
+  .header-inner nav {
+    gap: 10px;
+  }
+  .teams-nav {
+    padding: 8px;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+  }
+  .teams-nav > span {
+    display: none;
+  }
+  .teams-nav small {
+    font-size: 8px;
+  }
+  .github-button {
+    padding: 7px;
+  }
+  .github-button .github-button-icon {
+    display: grid;
+    width: 24px;
+    height: 24px;
+  }
+  .team-teaser {
+    gap: 13px;
+    flex-wrap: wrap;
+    padding: 17px;
+    margin: 12px 0 30px;
+  }
+  .teaser-balls {
+    gap: 4px;
+  }
+  .teaser-balls .pokeball-mark {
+    width: 16px;
+    height: 16px;
+  }
+  .team-teaser > span:nth-child(2) {
+    flex: 1;
+    min-width: 180px;
+  }
+  .team-teaser strong {
+    font-size: 12px;
+  }
+  .team-teaser small {
+    font-size: 9px;
+    line-height: 1.6;
+  }
+  .teaser-link {
+    margin-left: 0;
+    font-size: 11px;
+  }
+  .team-page,
+  .developer-page {
+    padding-top: 30px;
+  }
+  .team-page-intro,
+  .picks-intro {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 25px;
+    margin-bottom: 27px;
+  }
+  .team-page h1,
+  .developer-page h1 {
+    font-size: 43px;
+    letter-spacing: -2px;
+  }
+  .team-page-intro .eyebrow {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+  .team-page-intro p,
+  .picks-intro p {
+    font-size: 12px;
+  }
+  .developer-invitation {
+    padding: 22px;
+  }
+  .developer-invitation strong {
+    margin-top: 14px;
+    font-size: 24px;
+  }
+  .team-workbench {
+    padding: 17px;
+  }
+  .workbench-toolbar {
+    gap: 10px;
+  }
+  .workbench-toolbar > div {
+    min-width: 0;
+    flex: 1;
+  }
+  .workbench-toolbar select {
+    width: 100%;
+    font-size: 10px;
+  }
+  .workbench-toolbar .button {
+    padding: 11px;
+    font-size: 10px;
+    gap: 5px;
+  }
+  .roster-heading {
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .roster-heading > div:first-child {
+    min-width: 0;
+    flex: 1;
+  }
+  .roster-heading h2 {
+    font-size: 23px;
+    line-height: 1.2;
+  }
+  .rename-team-form input {
+    width: 100%;
+  }
+  .roster-counter > span {
+    font-size: 28px;
+  }
+  .roster-counter {
+    font-size: 11px;
+  }
+  .roster-counter small {
+    font-size: 6px;
+    letter-spacing: 0.5px;
+  }
+  .team-slots,
+  .team-picker-grid,
+  .developer-picks-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .team-slot {
+    padding: 10px;
+  }
+  .slot-art {
+    height: 115px;
+  }
+  .slot-art img {
+    width: 115px;
+    height: 115px;
+    max-width: 100%;
+  }
+  .team-slot h3 {
+    min-height: 32px;
+    font-size: 11px;
+  }
+  .slot-bottom {
+    flex-wrap: wrap;
+  }
+  .empty-team-slot {
+    min-height: 235px;
+  }
+  .empty-team-slot strong {
+    font-size: 10px;
+  }
+  .empty-team-slot small {
+    font-size: 8px;
+  }
+  .team-insights {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .team-insights > div:last-child {
+    grid-column: 1 / -1;
+  }
+  .team-workbench-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .create-team-form {
+    padding: 15px;
+  }
+  .create-team-form label {
+    width: 100%;
+  }
+  .create-team-form input {
+    flex-basis: 100%;
+  }
+  .team-section-heading {
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .team-section-heading h2 {
+    font-size: 23px;
+  }
+  .team-section-heading .eyebrow {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+  .team-section-heading > span {
+    font-size: 9px;
+    white-space: nowrap;
+    margin-top: 25px;
+  }
+  .team-picker-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+  .team-picker-controls > .search-box {
+    grid-column: 1 / -1;
+  }
+  .team-picker-controls select {
+    font-size: 11px;
+  }
+  .picker-card {
+    padding: 12px;
+  }
+  .picker-card h3 {
+    font-size: 12px;
+  }
+  .picks-count {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .picks-count strong {
+    font-size: 38px;
+    letter-spacing: -2px;
+  }
+  .region-tabs {
+    gap: 6px;
+  }
+  .region-tabs button {
+    padding: 9px;
+    font-size: 10px;
+  }
+  .preset-banner {
+    padding: 20px;
+    gap: 15px;
+  }
+  .preset-banner h2 {
+    font-size: 21px;
+  }
+  .preset-banner > div:first-child {
+    width: 100%;
+  }
+  .preset-banner > .button {
+    order: 4;
+    margin: 0;
+  }
+  .preset-roster {
+    flex-basis: 100%;
+    justify-content: space-between;
+  }
+  .preset-roster img {
+    width: 43px;
+    height: 55px;
+  }
+  .picks-section-heading {
+    display: block;
+    margin-top: 30px;
+  }
+  .picks-section-heading h2 {
+    font-size: 20px;
+  }
+  .developer-pick-card {
+    padding: 12px;
+  }
+  .developer-pick-card h3 {
+    font-size: 12px;
+  }
+  .pick-art {
+    height: 125px;
+  }
+  .pick-art img {
+    height: 125px;
+    width: 125px;
+  }
+  .pick-art > span {
+    width: 100px;
+    height: 100px;
+  }
+  .pick-card-top {
+    font-size: 6px;
+    letter-spacing: 0.5px;
+  }
+  .team-toast {
+    font-size: 10px;
+    padding: 12px;
+    gap: 9px;
+  }
+  .site-footer > div {
+    flex-wrap: wrap;
+  }
+  .maker-credit {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+  .closing-note .return-button {
+    padding: 9px;
+  }
+  .return-button .return-ball {
+    display: none;
+  }
+  .hero-actions .encounter-button {
+    padding: 10px 12px;
+  }
 }
 @media (max-width: 370px) {
-  .header-inner nav { gap: 6px; }
-  .teams-nav small { display: none; }
-  .brand { font-size: 21px; }
-  .brand-icon { width: 30px; }
-  .team-workbench { padding: 12px; }
-  .preset-roster img { width: 37px; }
+  .header-inner nav {
+    gap: 6px;
+  }
+  .teams-nav small {
+    display: none;
+  }
+  .brand {
+    font-size: 21px;
+  }
+  .brand-icon {
+    width: 30px;
+  }
+  .team-workbench {
+    padding: 12px;
+  }
+  .preset-roster img {
+    width: 37px;
+  }
 }

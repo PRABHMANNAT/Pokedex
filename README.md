@@ -29,17 +29,17 @@ Warm paper, official artwork, and 1,025 new reasons to explore.
 
 Your next favorite might be in Kanto. Or it might be #1025. Search the **entire National Pokédex** from the first keystroke; the app never limits discovery to a partially loaded page.
 
-| For the curious trainer | What you get |
-| --- | --- |
-| **Find your next favorite** | Search by name or National ID; combine all 18 type filters with nine generations and legendary/mythical categories. |
-| **Make it yours** | Save Pokémon to a local collection with one tap. Your collection survives reloads and syncs across browser tabs. |
-| **Build your six** | Create named, login-free teams, choose a lead, compare type diversity and shared weaknesses, and share a team link. |
-| **Meet the developer’s picks** | Explore Prabh’s personal favorites across nine regions and Gigantamax forms, with editable six-member starter teams. |
-| **Look a little closer** | Open field notes with six base stats, abilities, height, weight, type weaknesses, and evolution connections. |
-| **Chase a different sparkle** | Switch cards and detail artwork to shiny variants, where the source provides them. |
-| **Explore your way** | Sort by name, number, or base-stat total; use compact cards, load more entries, or meet a random Pokémon. |
-| **Day or night** | A Poké Ball theme switch, a saved theme preference, and a carefully balanced dark palette. |
-| **Share an encounter** | Copy filter URLs or link directly to a Pokémon. Keyboard search, Escape-to-close dialogs, and reduced-motion support are built in. |
+| For the curious trainer        | What you get                                                                                                                       |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **Find your next favorite**    | Search by name or National ID; combine all 18 type filters with nine generations and legendary/mythical categories.                |
+| **Make it yours**              | Save Pokémon to a local collection with one tap. Your collection survives reloads and syncs across browser tabs.                   |
+| **Build your six**             | Create named, login-free teams, choose a lead, compare type diversity and shared weaknesses, and share a team link.                |
+| **Meet the developer’s picks** | Explore Prabh’s personal favorites across nine regions and Gigantamax forms, with editable six-member starter teams.               |
+| **Look a little closer**       | Open field notes with six base stats, abilities, height, weight, type weaknesses, and evolution connections.                       |
+| **Chase a different sparkle**  | Switch cards and detail artwork to shiny variants, where the source provides them.                                                 |
+| **Explore your way**           | Sort by name, number, or base-stat total; use compact cards, load more entries, or meet a random Pokémon.                          |
+| **Day or night**               | A Poké Ball theme switch, a saved theme preference, and a carefully balanced dark palette.                                         |
+| **Share an encounter**         | Copy filter URLs or link directly to a Pokémon. Keyboard search, Escape-to-close dialogs, and reduced-motion support are built in. |
 
 <div align="center">
 <br />

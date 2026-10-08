@@ -1,7 +1,9 @@
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-  await page.route('https://raw.githubusercontent.com/PokeAPI/sprites/**', route => route.fulfill({ path: 'public/brand/pikachu.png', contentType: 'image/png' }));
+  await page.route('https://raw.githubusercontent.com/PokeAPI/sprites/**', (route) =>
+    route.fulfill({ path: 'public/brand/pikachu.png', contentType: 'image/png' }),
+  );
   await page.goto('/teams');
 });
 
@@ -33,7 +35,10 @@ test('default PDF team, custom editing, lead order, persistence and deletion', a
   await expect(page.locator('.team-slot').first()).toContainText('Mega Charizard X');
 });
 
-test('shared teams import only on confirmation and invalid links cannot replace saves', async ({ page, context }) => {
+test('shared teams import only on confirmation and invalid links cannot replace saves', async ({
+  page,
+  context,
+}) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.getByRole('button', { name: 'Copy team link' }).click();
   await expect(page.getByRole('button', { name: 'Link copied' })).toBeVisible();
@@ -45,7 +50,9 @@ test('shared teams import only on confirmation and invalid links cannot replace 
   await expect(page.getByRole('heading', { name: 'Shared duo.' })).toBeVisible();
   await expect(page.locator('.empty-team-slot')).toHaveCount(4);
   await page.goto('/teams?lineup=6.kanto-10034');
-  await expect(page.getByText('This team link contains an invalid or duplicate Pokémon.')).toBeVisible();
+  await expect(
+    page.getByText('This team link contains an invalid or duplicate Pokémon.'),
+  ).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Shared duo.' })).toBeVisible();
 });
 
@@ -53,8 +60,16 @@ test('all regional picks, special forms, shiny choices and editable presets', as
   await page.goto('/picks');
   await expect(page.locator('.region-tabs button')).toHaveCount(10);
   await expect(page.locator('.developer-pick-card')).toHaveCount(23);
-  await expect(page.locator('.developer-pick-card').filter({ hasText: 'Mega Charizard X' }).locator('img')).toHaveAttribute('src', /10034.png/);
-  await expect(page.locator('.developer-pick-card').filter({ hasText: 'Shiny Gyarados' }).first().locator('img')).toHaveAttribute('src', /shiny\/130.png/);
+  await expect(
+    page.locator('.developer-pick-card').filter({ hasText: 'Mega Charizard X' }).locator('img'),
+  ).toHaveAttribute('src', /10034.png/);
+  await expect(
+    page
+      .locator('.developer-pick-card')
+      .filter({ hasText: 'Shiny Gyarados' })
+      .first()
+      .locator('img'),
+  ).toHaveAttribute('src', /shiny\/130.png/);
   await page.getByRole('button', { name: 'Gigantamax', exact: true }).click();
   await expect(page.locator('.developer-pick-card')).toHaveCount(9);
   await page.getByRole('button', { name: 'Use this team' }).click();
@@ -69,9 +84,13 @@ test('team picker filters and small screens fit without horizontal scrolling', a
   await page.getByLabel('Team picker type').selectOption('fire');
   await page.getByLabel('Team picker generation').selectOption('1');
   await expect(page.locator('.picker-card')).toHaveCount(12);
-  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await expect
+    .poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
+    .toBe(true);
   await page.goto('/picks?region=alola');
-  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await expect
+    .poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
+    .toBe(true);
   await page.getByRole('switch', { name: 'Night mode' }).click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
 });
@@ -80,9 +99,49 @@ test('blocked storage stays usable and corrupted saves fall back safely', async 
   await page.evaluate(() => localStorage.setItem('pokedex:teams:v1', '{bad json'));
   await page.reload();
   await expect(page.locator('.team-slot').first()).toContainText('Mega Charizard X');
-  await page.addInitScript(() => { Storage.prototype.setItem = () => { throw new Error('Storage blocked'); }; });
+  await page.addInitScript(() => {
+    Storage.prototype.setItem = () => {
+      throw new Error('Storage blocked');
+    };
+  });
   await page.reload();
-  await expect(page.getByText('Storage unavailable · Your team works for this session')).toBeVisible();
+  await expect(
+    page.getByText('Storage unavailable · Your team works for this session'),
+  ).toBeVisible();
   await page.getByRole('button', { name: 'Remove Mega Charizard X from team' }).click();
   await expect(page.locator('.empty-team-slot')).toHaveCount(1);
+});
+
+test('explorer cards guide a full team to make room and add the selected companion', async ({
+  page,
+}) => {
+  await page.goto('/');
+  await page.getByRole('link', { name: 'Choose Bulbasaur for team' }).click();
+  await expect(page.getByText('Make room for Bulbasaur.')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Add Bulbasaur', exact: true })).toBeDisabled();
+  await page.getByRole('button', { name: 'Remove Mew from team' }).click();
+  await page.getByRole('button', { name: 'Add Bulbasaur', exact: true }).click();
+  await expect(page.locator('.team-slot').last()).toContainText('Bulbasaur');
+  await page.goto('/');
+  await expect(
+    page.locator('.pokemon-card').first().getByText('On your team', { exact: true }),
+  ).toBeVisible();
+});
+
+test('valid edits sync between tabs while malformed cross-tab state is ignored', async ({
+  page,
+  context,
+}) => {
+  const other = await context.newPage();
+  await other.goto('/teams');
+  await page.getByRole('button', { name: 'Remove Mew from team' }).click();
+  await expect(other.locator('.empty-team-slot')).toHaveCount(1);
+  await page.evaluate(() =>
+    localStorage.setItem(
+      'pokedex:teams:v1',
+      JSON.stringify({ version: 1, activeId: 'bad', teams: [null] }),
+    ),
+  );
+  await expect(other.getByRole('heading', { name: 'Prabh’s Kanto six.' })).toBeVisible();
+  await expect(other.locator('.empty-team-slot')).toHaveCount(1);
 });

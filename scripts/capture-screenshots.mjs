@@ -51,18 +51,27 @@ await page.screenshot({
 });
 await page.setViewportSize({ width: 1440, height: 1160 });
 const captureRoot = process.env.CAPTURE_URL || 'http://127.0.0.1:5173/';
-for (const [route, filename] of [['teams', 'teams.png'], ['picks', 'developer-picks.png']]) {
+for (const [route, filename] of [
+  ['teams', 'teams.png'],
+  ['picks', 'developer-picks.png'],
+]) {
   await page.goto(new URL(route, captureRoot).href);
   await page.evaluate(() => document.fonts.ready);
-  await page.waitForFunction(() => Array.from(document.images)
-    .filter(img => img.getBoundingClientRect().top < innerHeight)
-    .every(img => img.complete));
-  await page.screenshot({ path: fileURLToPath(new URL(`../docs/images/${filename}`, import.meta.url)) });
+  await page.waitForFunction(() =>
+    Array.from(document.images)
+      .filter((img) => img.getBoundingClientRect().top < innerHeight)
+      .every((img) => img.complete),
+  );
+  await page.screenshot({
+    path: fileURLToPath(new URL(`../docs/images/${filename}`, import.meta.url)),
+  });
 }
 await page.goto(new URL('teams', captureRoot).href);
 await page.setViewportSize({ width: 390, height: 844 });
 await page.locator('.team-workbench').scrollIntoViewIfNeeded();
-await page.screenshot({ path: fileURLToPath(new URL('../docs/images/mobile-team.png', import.meta.url)) });
+await page.screenshot({
+  path: fileURLToPath(new URL('../docs/images/mobile-team.png', import.meta.url)),
+});
 await browser.close();
 if (errors.length) throw new Error(errors.join('\n'));
 console.log(

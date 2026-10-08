@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "A beautifully crafted Pokémon field guide with 1,025 entries, type filters, shiny artwork, and collections.",
+  "description": "A beautifully crafted Pokémon field guide with 1,025 entries, login-free teams, developer favorites, shiny artwork and type filters.",
   "repository": {
     "type": "git",
     "url": "https://github.com/PRABHMANNAT/Pokedex.git"

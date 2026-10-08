@@ -13,6 +13,124 @@ export default function TeamPicker({ activeTeam, onAdd }) {
   const [generation, setGeneration] = useState('');
   const [limit, setLimit] = useState(18);
   const results = filterCatalog(catalog, { query, type, generation });
-  const change = setter => event => { setter(event.target.value); setLimit(18); };
-  return <section className="team-picker" id="choose-pokemon" aria-labelledby="picker-title"><div className="team-section-heading"><div><div className="eyebrow">EVERY GREAT TEAM STARTS SOMEWHERE</div><h2 id="picker-title">Find your companions<span className="heading-dot">.</span></h2></div><span>{results.length.toLocaleString()} Pokémon</span></div><div className="team-picker-controls"><div className="search-box"><Search size={17} /><label className="sr-only" htmlFor="team-search">Search Pokémon for your team</label><input id="team-search" type="search" value={query} onChange={change(setQuery)} placeholder="A name, a number, a new adventure…" /></div><label><span className="sr-only">Team picker type</span><select value={type} onChange={change(setType)}><option value="">All types</option>{Object.keys(TYPES).map(type => <option key={type} value={type}>{formatName(type)}</option>)}</select></label><label><span className="sr-only">Team picker generation</span><select value={generation} onChange={change(setGeneration)}><option value="">All generations</option>{REGIONS.map((region,index) => <option key={region} value={index + 1}>{region}</option>)}</select></label></div><p className="picker-hint">{activeTeam.members.length === 6 ? 'Six companions, one adventure. Remove a member above to make space, or create another team.' : 'Add up to six different Pokémon. The first slot is your lead.'}</p><div className="team-picker-grid">{results.slice(0,limit).map(pokemon => { const key = String(pokemon.id); const present = activeTeam.members.some(existing => resolveMember(existing).id === pokemon.id); const error = additionError(activeTeam.members, key); return <article key={key} className="picker-card"><span className="dex-number">{dexNumber(pokemon.id)}</span><PokemonImage id={pokemon.id} name={pokemon.name} /><h3>{formatName(pokemon.name)}</h3><div>{pokemon.types.map(type => <TypeBadge key={type} type={type} />)}</div><button className={`team-add-button ${present ? 'on-team' : ''}`} disabled={Boolean(error)} title={error || `Add ${formatName(pokemon.name)}`} onClick={() => onAdd(key)} aria-label={`Add ${formatName(pokemon.name)} to team`}>{present ? <Check size={13} /> : <Plus size={13} />}{present ? 'On your team' : activeTeam.members.length === 6 ? 'Team full' : 'Add to team'}</button></article>; })}</div>{!results.length && <div className="team-picker-empty"><h3>No companions found.</h3><p>Try another search or loosen the filters.</p><button className="button button-outlined" onClick={() => {setQuery('');setType('');setGeneration('');}}>Reset search</button></div>}{limit < results.length && <div className="load-more"><button className="button discover-button" onClick={() => setLimit(value => value + 18)}><span className="pokeball-mark" /> More companions <Plus size={14} /></button></div>}</section>;
+  const change = (setter) => (event) => {
+    setter(event.target.value);
+    setLimit(18);
+  };
+  return (
+    <section className="team-picker" id="choose-pokemon" aria-labelledby="picker-title">
+      <div className="team-section-heading">
+        <div>
+          <div className="eyebrow">EVERY GREAT TEAM STARTS SOMEWHERE</div>
+          <h2 id="picker-title">
+            Find your companions<span className="heading-dot">.</span>
+          </h2>
+        </div>
+        <span>{results.length.toLocaleString()} Pokémon</span>
+      </div>
+      <div className="team-picker-controls">
+        <div className="search-box">
+          <Search size={17} />
+          <label className="sr-only" htmlFor="team-search">
+            Search Pokémon for your team
+          </label>
+          <input
+            id="team-search"
+            type="search"
+            value={query}
+            onChange={change(setQuery)}
+            placeholder="A name, a number, a new adventure…"
+          />
+        </div>
+        <label>
+          <span className="sr-only">Team picker type</span>
+          <select value={type} onChange={change(setType)}>
+            <option value="">All types</option>
+            {Object.keys(TYPES).map((type) => (
+              <option key={type} value={type}>
+                {formatName(type)}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          <span className="sr-only">Team picker generation</span>
+          <select value={generation} onChange={change(setGeneration)}>
+            <option value="">All generations</option>
+            {REGIONS.map((region, index) => (
+              <option key={region} value={index + 1}>
+                {region}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <p className="picker-hint">
+        {activeTeam.members.length === 6
+          ? 'Six companions, one adventure. Remove a member above to make space, or create another team.'
+          : 'Add up to six different Pokémon. The first slot is your lead.'}
+      </p>
+      <div className="team-picker-grid">
+        {results.slice(0, limit).map((pokemon) => {
+          const key = String(pokemon.id);
+          const present = activeTeam.members.some(
+            (existing) => resolveMember(existing).id === pokemon.id,
+          );
+          const error = additionError(activeTeam.members, key);
+          return (
+            <article key={key} className="picker-card">
+              <span className="dex-number">{dexNumber(pokemon.id)}</span>
+              <PokemonImage id={pokemon.id} name={pokemon.name} />
+              <h3>{formatName(pokemon.name)}</h3>
+              <div>
+                {pokemon.types.map((type) => (
+                  <TypeBadge key={type} type={type} />
+                ))}
+              </div>
+              <button
+                className={`team-add-button ${present ? 'on-team' : ''}`}
+                disabled={Boolean(error)}
+                title={error || `Add ${formatName(pokemon.name)}`}
+                onClick={() => onAdd(key)}
+                aria-label={`Add ${formatName(pokemon.name)} to team`}
+              >
+                {present ? <Check size={13} /> : <Plus size={13} />}
+                {present
+                  ? 'On your team'
+                  : activeTeam.members.length === 6
+                    ? 'Team full'
+                    : 'Add to team'}
+              </button>
+            </article>
+          );
+        })}
+      </div>
+      {!results.length && (
+        <div className="team-picker-empty">
+          <h3>No companions found.</h3>
+          <p>Try another search or loosen the filters.</p>
+          <button
+            className="button button-outlined"
+            onClick={() => {
+              setQuery('');
+              setType('');
+              setGeneration('');
+            }}
+          >
+            Reset search
+          </button>
+        </div>
+      )}
+      {limit < results.length && (
+        <div className="load-more">
+          <button
+            className="button discover-button"
+            onClick={() => setLimit((value) => value + 18)}
+          >
+            <span className="pokeball-mark" /> More companions <Plus size={14} />
+          </button>
+        </div>
+      )}
+    </section>
+  );
 }

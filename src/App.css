@@ -84,11 +84,39 @@
   border-color: var(--accent);
   box-shadow: 0 4px 0 var(--accent-soft);
 }
-.github-button-icon { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 5px; background: color-mix(in srgb, var(--page) 12%, transparent); }
-.github-star { display: grid; place-items: center; width: 24px; height: 24px; color: #e7be6b; border-left: 1px solid color-mix(in srgb, var(--page) 20%, transparent); padding-left: 9px; margin-right: 4px; }
-.maker-credit { font-size: 10px; line-height: 1.7; }
-.maker-credit > a { display: inline !important; font-weight: 650; color: var(--text); }
-.maker-credit small { display: flex; align-items: center; gap: 5px; font-size: 9px; }
+.github-button-icon {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--page) 12%, transparent);
+}
+.github-star {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  color: #e7be6b;
+  border-left: 1px solid color-mix(in srgb, var(--page) 20%, transparent);
+  padding-left: 9px;
+  margin-right: 4px;
+}
+.maker-credit {
+  font-size: 10px;
+  line-height: 1.7;
+}
+.maker-credit > a {
+  display: inline !important;
+  font-weight: 650;
+  color: var(--text);
+}
+.maker-credit small {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9px;
+}
 .github-button > svg:first-child {
   color: #b89851;
 }
@@ -262,11 +290,34 @@
 .hero-art:hover .hero-charizard {
   transform: rotate(-4deg) translateY(-5px);
 }
-.encounter-button { padding: 6px 11px 6px 6px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 3px 0 var(--line); gap: 9px; }
-.encounter-icon { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 6px; background: var(--accent-soft); color: var(--accent); }
-.encounter-arrow { display: grid; place-items: center; color: var(--muted); margin-left: 4px; }
-.encounter-button:hover { border-color: var(--accent); }
-.encounter-button:hover .encounter-icon svg { transform: rotate(-12deg); }
+.encounter-button {
+  padding: 6px 11px 6px 6px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 3px 0 var(--line);
+  gap: 9px;
+}
+.encounter-icon {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.encounter-arrow {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  margin-left: 4px;
+}
+.encounter-button:hover {
+  border-color: var(--accent);
+}
+.encounter-button:hover .encounter-icon svg {
+  transform: rotate(-12deg);
+}
 .hero-art-bottom {
   position: absolute;
   bottom: 0;

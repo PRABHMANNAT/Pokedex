@@ -23,9 +23,12 @@ Species prose, genus, and habitat are fetched on demand and cached in memory. AP
 
 - `pokedex:collection:v1`: an array of validated National IDs in localStorage.
 - `pokedex:theme:v1`: `light` or `dark` in localStorage, initially based on the device preference.
+- `pokedex:teams:v1`: validated named teams and their active ID; see [team schema and privacy notes](TEAMS.md).
 - URL query: `q`, `type`, `gen`, `rarity`, `sort`, `view=collection`, `pokemon=ID`.
 - Collection membership stays on the current device and is not embedded in shared URLs.
 
 ## Refreshing data
 
 Run `npm run data:sync` with network access. The script downloads eight public CSV files, normalizes them, validates the count and required fields, then updates both generated JSON files. Run the tests and inspect the changes before committing. Normal builds never need to fetch the catalog.
+
+The developer notebook adds curated alternate forms separately through `developerPicks.js` and `pickForms.json`. `npm run data:forms` refreshes their types and stats without changing the National catalog. Form artwork IDs do not replace National species IDs; duplicate checks still operate at species level.

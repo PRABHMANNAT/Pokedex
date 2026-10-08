@@ -24,8 +24,13 @@ export default function Hero({ onRandom }) {
             Explore the Pokédex <ArrowDown size={16} />
           </a>
           <button className="button encounter-button" onClick={onRandom}>
-            <span className="encounter-icon"><Shuffle size={16} /></span> Surprise me
-            <span className="encounter-arrow"><ArrowUpRight size={14} /></span>
+            <span className="encounter-icon">
+              <Shuffle size={16} />
+            </span>{' '}
+            Surprise me
+            <span className="encounter-arrow">
+              <ArrowUpRight size={14} />
+            </span>
           </button>
         </div>
         <div className="hero-facts">

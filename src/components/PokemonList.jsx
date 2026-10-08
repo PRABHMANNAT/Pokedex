@@ -52,24 +52,18 @@ export default function PokemonList({ favorites, toggleFavorite }) {
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   }, []);
-  const update = (key, value) =>
-    setParams(
-      (previous) => {
-        const next = new URLSearchParams(previous);
-        value ? next.set(key, String(value)) : next.delete(key);
-        return next;
-      },
-      { replace: key !== 'pokemon' },
-    );
-  const reset = () =>
-    setParams(
-      (previous) => {
-        const next = new URLSearchParams(previous);
-        ['q', 'type', 'gen', 'rarity', 'sort'].forEach((key) => next.delete(key));
-        return next;
-      },
-      { replace: true },
-    );
+  // Router navigations update the browser URL before their next React render.
+  // Read that latest URL so rapid filter changes cannot overwrite each other.
+  const update = (key, value) => {
+    const next = new URLSearchParams(window.location.search);
+    value ? next.set(key, String(value)) : next.delete(key);
+    setParams(next, { replace: key !== 'pokemon' });
+  };
+  const reset = () => {
+    const next = new URLSearchParams(window.location.search);
+    ['q', 'type', 'gen', 'rarity', 'sort'].forEach((key) => next.delete(key));
+    setParams(next, { replace: true });
+  };
   const random = () =>
     update(
       'pokemon',
@@ -227,7 +221,10 @@ export default function PokemonList({ favorites, toggleFavorite }) {
                       className="button discover-button"
                       onClick={() => setVisible((current) => current + PAGE_SIZE)}
                     >
-                      <span className="pokeball-mark" aria-hidden="true" /> Discover more <span className="discover-arrow"><ArrowDown size={15} /></span>
+                      <span className="pokeball-mark" aria-hidden="true" /> Discover more{' '}
+                      <span className="discover-arrow">
+                        <ArrowDown size={15} />
+                      </span>
                     </button>
                   )}
                 </div>
@@ -276,7 +273,13 @@ export default function PokemonList({ favorites, toggleFavorite }) {
             })
           }
         >
-          <span className="return-ball"><span className="pokeball-mark" aria-hidden="true" /></span><span>Back to top<small>RETURN TO BASE</small></span><ArrowUp size={15} />
+          <span className="return-ball">
+            <span className="pokeball-mark" aria-hidden="true" />
+          </span>
+          <span>
+            Back to top<small>RETURN TO BASE</small>
+          </span>
+          <ArrowUp size={15} />
         </button>
       </div>
       {selected && (
