@@ -9,6 +9,7 @@ The interface borrows from a trainer's notebook: warm paper, quiet borders, a re
 - **Motion:** small hover movements with `prefers-reduced-motion` support. No autoplay sound.
 - **Mobile:** two card columns, horizontally scrollable type filters, compact header controls, and vertically stacked detail panels.
 - **Assets:** real sourced artwork and actual browser screenshots; see `ATTRIBUTION.md`.
+- **Featured encounters:** twelve sourced Pokémon rotate on page refresh, excluding the previous feature when browser storage is available. Centered artwork and a dedicated Japanese-name rail keep the card readable at every breakpoint. The feature stays stable during filtering and navigation within the same page load.
 - **Teams:** a six-slot notebook workbench with numbered companions, explicit lead ordering, type-based artwork accents, and local-save feedback. The developer gallery separates personal favorites from editable starter sixes.
 - **Controls:** tactile encounter and discovery buttons, a dark GitHub badge, and a Poké Ball return-to-base control. Icon-only header controls retain accessible names on mobile.
 

@@ -15,6 +15,37 @@
   color: var(--muted);
   font-size: 13px;
 }
+.teams-nav > .team-nav-emblem {
+  display: block;
+  position: relative;
+  width: 32px;
+  height: 26px;
+  flex-shrink: 0;
+}
+.team-nav-emblem .pokeball-mark {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  transform: scale(0.75);
+}
+.team-nav-emblem .pokeball-mark:first-child {
+  left: -5px;
+  top: 7px;
+  transform: scale(0.5);
+  opacity: 0.65;
+}
+.team-nav-emblem .pokeball-mark:last-child {
+  left: 13px;
+  top: 7px;
+  transform: scale(0.5);
+  opacity: 0.65;
+}
+.team-nav-emblem .pokeball-mark:nth-child(2) {
+  z-index: 1;
+}
+.teams-nav:hover .team-nav-emblem {
+  transform: translateY(-1px);
+}
 .teams-nav small {
   padding: 3px 5px;
   background: var(--accent-soft);

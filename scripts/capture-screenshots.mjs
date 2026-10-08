@@ -30,7 +30,7 @@ await page.waitForTimeout(350); // Let theme color transitions settle before the
 await page.screenshot({ path: fileURLToPath(new URL('../docs/images/dark.png', import.meta.url)) });
 await page.getByRole('switch', { name: 'Night mode' }).click();
 await page.waitForTimeout(350);
-await page.getByRole('link', { name: 'Meet Charizard' }).click();
+await page.locator('.hero-art').click();
 await page.getByRole('dialog').waitFor();
 await page.locator('.panel-art img').waitFor();
 await page.waitForFunction(

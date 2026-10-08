@@ -19,7 +19,7 @@ Warm paper, official artwork, and 1,025 new reasons to explore.
 
 <br />
 
-<img src="docs/images/desktop.png" alt="The real Pokédex app: cream field-guide interface, Charizard hero, elemental filters, and collectible Pokémon cards" width="100%" />
+<img src="docs/images/desktop.png" alt="The real Pokédex app: cream field-guide interface, rotating featured Pokémon, elemental filters, and collectible cards" width="100%" />
 
 <sub>Actual browser capture. Original Pokémon artwork. No generated promotional imagery.</sub>
 
@@ -45,7 +45,7 @@ Your next favorite might be in Kanto. Or it might be #1025. Search the **entire 
 <br />
 <img src="docs/images/dark.png" alt="The Pokédex in its green-charcoal night theme" width="100%" />
 <br /><br />
-<img src="docs/images/details.png" alt="Charizard field notes with real artwork, base-stat meters, abilities, weaknesses, and evolution connections" width="100%" />
+<img src="docs/images/details.png" alt="Pokémon field notes with real artwork, base-stat meters, abilities, weaknesses, and evolution connections" width="100%" />
 <br /><br />
 <img src="docs/images/mobile.png" alt="The responsive Pokémon field guide on a 390px mobile screen" width="280" />
 <br />

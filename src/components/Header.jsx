@@ -1,4 +1,4 @@
-import { ArrowUpRight, Github, Star, Users } from 'lucide-react';
+import { ArrowUpRight, Github, Star } from 'lucide-react';
 import { useContext } from 'react';
 import { TeamContext } from '../context/TeamContext';
 import { Link } from 'react-router-dom';
@@ -33,7 +33,11 @@ export default function Header({ theme, toggleTheme }) {
             to="/teams"
             aria-label={`My teams, ${activeTeam.members.length} of 6 companions`}
           >
-            <Users size={15} />
+            <span className="team-nav-emblem" aria-hidden="true">
+              <span className="pokeball-mark" />
+              <span className="pokeball-mark" />
+              <span className="pokeball-mark" />
+            </span>
             <span>My team</span>
             <small>{activeTeam.members.length}/6</small>
           </Link>
