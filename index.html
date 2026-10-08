@@ -2,9 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" href="%BASE_URL%brand/poke-ball.png" />
+    <link rel="apple-touch-icon" href="%BASE_URL%brand/pikachu.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <meta name="theme-color" content="#faf9f6" />
+    <meta name="description" content="A beautifully crafted Pokémon field guide. Discover 1,025 Pokémon, explore all 18 types, switch to shiny artwork, and build your own collection." />
+    <meta property="og:title" content="Pokédex · A Trainer’s Field Guide" />
+    <meta property="og:description" content="Little creatures. Endless discovery. Explore nine generations of Pokémon in a warm, thoughtfully designed field guide." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/PRABHMANNAT/Pokedex/main/docs/images/desktop.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Pokédex · A Trainer’s Field Guide</title>
+    <script>
+      try {
+        const saved = JSON.parse(localStorage.getItem('pokedex:theme:v1'));
+        document.documentElement.dataset.theme = ['light', 'dark'].includes(saved) ? saved : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      } catch { document.documentElement.dataset.theme = 'light'; }
+    </script>
   </head>
   <body>
     <div id="root"></div>

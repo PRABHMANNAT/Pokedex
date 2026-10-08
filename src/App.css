@@ -34,6 +34,7 @@
 .hero-art-orbit { width: 270px; height: 270px; border: 1px solid #9d7e4430; border-radius: 50%; position: absolute; top: 30px; right: 64px; background: #f6ead225; box-shadow: 0 0 0 18px #d7bf8620, 0 0 0 42px #d7bf8610; }
 .hero-japanese { position: absolute; top: 70px; right: 18px; writing-mode: vertical-rl; font-size: 30px; letter-spacing: 8px; opacity: .18; font-weight: 700; }
 .art-label { position: absolute; top: 24px; left: 25px; font-size: 9px; font-weight: 600; letter-spacing: 1.4px; z-index: 2; }
+.pokemon-wordmark { position: absolute; width: 75px; height: auto; right: 23px; top: 19px; z-index: 2; }
 .hero-charizard { position: absolute; width: 315px; height: 315px; object-fit: contain; top: -2px; right: 68px; transform: rotate(-7deg); filter: drop-shadow(0 18px 13px #92683c22); transition: transform .35s; }
 .hero-art:hover .hero-charizard { transform: rotate(-4deg) translateY(-5px); }
 .hero-stamp { position: absolute; display: flex; align-items: center; gap: 6px; bottom: 93px; left: 24px; padding: 8px 11px; background: #fff7e6b8; border: 1px solid #987a3925; border-radius: 6px; transform: rotate(-5deg); color: #745a35; font-size: 8px; font-weight: 650; letter-spacing: .7px; }
