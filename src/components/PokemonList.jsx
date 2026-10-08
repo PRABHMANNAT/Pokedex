@@ -222,10 +222,10 @@ export default function PokemonList({ favorites, toggleFavorite }) {
                   </p>
                   {visible < results.length && (
                     <button
-                      className="button button-outlined"
+                      className="button discover-button"
                       onClick={() => setVisible((current) => current + PAGE_SIZE)}
                     >
-                      Discover more <ArrowDown size={15} />
+                      <span className="pokeball-mark" aria-hidden="true" /> Discover more <span className="discover-arrow"><ArrowDown size={15} /></span>
                     </button>
                   )}
                 </div>
@@ -264,7 +264,7 @@ export default function PokemonList({ favorites, toggleFavorite }) {
           <strong>One Pokémon at a time.</strong>
         </p>
         <button
-          className="button button-plain"
+          className="button return-button"
           onClick={() =>
             window.scrollTo({
               top: 0,
@@ -274,7 +274,7 @@ export default function PokemonList({ favorites, toggleFavorite }) {
             })
           }
         >
-          Back to top <ArrowUp size={15} />
+          <span className="return-ball"><span className="pokeball-mark" aria-hidden="true" /></span><span>Back to top<small>RETURN TO BASE</small></span><ArrowUp size={15} />
         </button>
       </div>
       {selected && (
