@@ -87,3 +87,34 @@ test('notebook, collection, centered credit and source button fit desktop and mo
   await page.getByRole('switch', { name: 'Night mode' }).click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
 });
+
+test('filtered teams expand to full width with zoomed artwork and a usable return control', async ({
+  page,
+}) => {
+  await page.goto('/teams/all?creator=prabh&gen=1');
+  for (const width of [1440, 1159, 920, 390, 360]) {
+    await page.setViewportSize({ width, height: 900 });
+    const grid = await page.locator('.team-gallery-grid').boundingBox();
+    const card = await page.locator('.team-gallery-card').boundingBox();
+    expect(card.width).toBeGreaterThan(grid.width * 0.98);
+    const artwork = await page.locator('.gallery-roster img').first().boundingBox();
+    expect(artwork.width).toBeGreaterThan(100);
+    await expect(page.locator('.gallery-book-mark')).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+  }
+  await page.getByRole('link', { name: 'Back to the team builder', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Prabh’s Kanto six.' })).toBeVisible();
+});
+
+test('archive animation is finite and honors reduced motion', async ({ page }) => {
+  await page.goto('/teams/all');
+  await expect(page.locator('.archive-ring')).toHaveCSS('animation-iteration-count', '1');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(page.locator('.archive-ring')).toHaveCSS('animation-name', 'none');
+  await expect(page.locator('.archive-display > .pokeball-mark')).toHaveCSS(
+    'animation-name',
+    'none',
+  );
+});

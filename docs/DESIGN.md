@@ -11,6 +11,7 @@ The interface borrows from a trainer's notebook: warm paper, quiet borders, a re
 - **Assets:** real sourced artwork and actual browser screenshots; see `ATTRIBUTION.md`.
 - **Featured encounters:** twelve sourced Pokémon rotate on page refresh, excluding the previous feature when browser storage is available. Centered artwork and a dedicated Japanese-name rail keep the card readable at every breakpoint. The feature stays stable during filtering and navigation within the same page load.
 - **Teams:** a six-slot notebook workbench with numbered companions, explicit lead ordering, type-based artwork accents, and local-save feedback. The developer gallery separates personal favorites from editable starter sixes.
+- **Team collection:** roomy two-column previews with larger artwork; a single filtered result expands across the page with six companions in one row on wide screens. The trainer-archive badge uses a short, finite scan animation and disables motion for reduced-motion preferences. The return control remains a proper keyboard-accessible link.
 - **Controls:** tactile encounter and discovery buttons, a dark GitHub badge, and a Poké Ball return-to-base control. Icon-only header controls retain accessible names on mobile.
 
 Use `scripts/capture-screenshots.mjs` to refresh the README images against a running localhost server. It uses Playwright; install Chromium first, or set `PLAYWRIGHT_CHANNEL=chrome` to use installed Chrome. Do not substitute fabricated app screenshots.

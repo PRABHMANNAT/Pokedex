@@ -73,6 +73,7 @@ for (const [route, filename] of [
   ['teams', 'teams.png'],
   ['picks', 'developer-picks.png'],
   ['teams/all', 'team-collection.png'],
+  ['teams/all?creator=prabh&gen=1', 'team-focus.png'],
 ]) {
   await page.goto(new URL(route, captureRoot).href);
   await page
@@ -90,6 +91,7 @@ for (const [route, filename] of [
   await visibleArtworkReady();
   await page.screenshot({
     path: fileURLToPath(new URL(`../docs/images/${filename}`, import.meta.url)),
+    animations: 'disabled', // Finish finite entrance animations for a settled documentation capture.
   });
 }
 await page.goto(new URL('teams', captureRoot).href);

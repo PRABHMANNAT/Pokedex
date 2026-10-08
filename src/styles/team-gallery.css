@@ -122,11 +122,16 @@
 .gallery-book-mark {
   display: grid;
   justify-items: center;
-  gap: 14px;
-  padding: 35px;
+  gap: 12px;
+  padding: 18px 22px;
+  min-width: 190px;
+  flex-shrink: 0;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: var(--accent-soft);
+  background: linear-gradient(145deg, var(--surface), var(--accent-soft));
+  box-shadow:
+    0 4px 0 var(--line),
+    0 15px 35px #00000005;
 }
 .gallery-book-mark small {
   font-size: 8px;
@@ -207,12 +212,12 @@
 }
 .team-gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
 }
 .team-gallery-card {
   min-width: 0;
-  padding: 22px;
+  padding: 26px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 13px;
@@ -223,7 +228,7 @@
   justify-content: space-between;
   gap: 8px;
   color: var(--muted);
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 1px;
 }
 .gallery-card-meta small {
@@ -231,12 +236,12 @@
   background: var(--accent-soft);
   padding: 5px;
   border-radius: 4px;
-  font-size: 7px;
+  font-size: 8px;
   white-space: nowrap;
 }
 .team-gallery-card h3 {
   font:
-    800 21px 'Manrope',
+    800 26px 'Manrope',
     sans-serif;
   letter-spacing: -0.6px;
   margin: 17px 0 20px;
@@ -253,19 +258,19 @@
   align-items: center;
   justify-content: center;
   min-width: 0;
-  min-height: 105px;
+  min-height: 164px;
   border-radius: 7px;
   background: var(--page);
-  padding: 7px;
+  padding: 12px;
 }
 .gallery-roster img {
-  width: 80px;
-  height: 80px;
+  width: 128px;
+  height: 128px;
   max-width: 100%;
   object-fit: contain;
 }
 .gallery-roster > div > span:last-child {
-  font-size: 8px;
+  font-size: 11px;
   text-align: center;
   line-height: 1.5;
   min-height: 24px;
@@ -296,9 +301,185 @@
   font-size: 9px;
   color: var(--muted);
 }
+.single-team-view {
+  grid-template-columns: 1fr;
+}
+.single-team-view .gallery-roster {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+}
+.single-team-view .gallery-roster img {
+  width: 164px;
+  height: 164px;
+}
+.single-team-view .gallery-roster > div {
+  min-height: 211px;
+}
+.single-team-view .team-gallery-card h3 {
+  font-size: 31px;
+}
+.single-team-view .gallery-card-actions .button {
+  padding: 13px 17px;
+  font-size: 12px;
+}
+.gallery-back-button {
+  gap: 12px;
+  padding: 7px 12px 7px 7px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+  box-shadow: 0 3px 0 var(--line);
+  color: var(--text);
+  font:
+    700 11px 'Manrope',
+    sans-serif;
+}
+.gallery-back-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.gallery-back-button > span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.gallery-back-button small {
+  font:
+    500 6px 'DM Sans',
+    sans-serif;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+}
+.gallery-back-button > .pokeball-mark {
+  transform: scale(0.65);
+  margin-left: 3px;
+}
+.gallery-back-button:hover {
+  border-color: var(--accent);
+}
+.gallery-back-button:hover .gallery-back-icon {
+  background: var(--accent);
+  color: white;
+}
+.archive-device-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  font-size: 7px;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+}
+.archive-lights {
+  display: flex;
+  gap: 4px;
+}
+.archive-lights i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--line);
+}
+.archive-lights i:first-child {
+  background: var(--accent);
+}
+.archive-display {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  margin: 5px 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+}
+.archive-display > .pokeball-mark {
+  transform: scale(1.4);
+  animation: archive-arrival 1s ease-out both;
+}
+.archive-ring {
+  position: absolute;
+  inset: 7px;
+  border: 1px dashed color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: 50%;
+  animation: archive-sweep 2.8s ease-out both;
+}
+.archive-ring::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: calc(50% - 3px);
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.archive-device-index {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+.archive-device-index small {
+  max-width: 55px;
+  font-size: 7px;
+  letter-spacing: 1.7px;
+  line-height: 1.8;
+}
+.archive-device-index strong {
+  font-size: 31px;
+  letter-spacing: -1px;
+}
+.archive-device-footer {
+  width: 100%;
+  padding-top: 11px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  font-size: 6px;
+  letter-spacing: 1.3px;
+  color: var(--muted);
+}
+@keyframes archive-sweep {
+  from {
+    transform: rotate(-240deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+@keyframes archive-arrival {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .archive-ring,
+  .archive-display > .pokeball-mark {
+    animation: none;
+  }
+}
 @media (max-width: 1100px) {
   .team-gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .single-team-view {
+    grid-template-columns: 1fr;
+  }
+  .single-team-view .gallery-roster {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 @media (max-width: 700px) {
@@ -315,6 +496,42 @@
     font-size: 36px;
   }
   .gallery-book-mark {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    justify-content: space-between;
+  }
+  .gallery-intro {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+  .archive-device-heading {
+    width: auto;
+    max-width: 95px;
+    font-size: 6px;
+    gap: 8px;
+    line-height: 1.7;
+  }
+  .archive-display {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+  .archive-display > .pokeball-mark {
+    transform: none;
+    animation: none;
+  }
+  .archive-device-index {
+    width: auto;
+  }
+  .archive-device-index strong {
+    font-size: 27px;
+  }
+  .archive-device-index small,
+  .archive-device-footer {
     display: none;
   }
   .gallery-intro p {
@@ -351,5 +568,27 @@
   }
   .team-gallery-card {
     padding: 20px;
+  }
+  .gallery-roster,
+  .single-team-view .gallery-roster {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .gallery-roster img,
+  .single-team-view .gallery-roster img {
+    width: 120px;
+    height: 120px;
+  }
+  .gallery-roster > div,
+  .single-team-view .gallery-roster > div {
+    min-height: 160px;
+    padding: 9px;
+  }
+  .team-gallery-card h3,
+  .single-team-view .team-gallery-card h3 {
+    font-size: 24px;
+  }
+  .gallery-card-meta {
+    font-size: 8px;
   }
 }

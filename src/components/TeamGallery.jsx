@@ -60,8 +60,18 @@ export default function TeamGallery() {
   );
   return (
     <main className="page-shell team-gallery-page">
-      <Link className="back-to-teams" to="/teams">
-        <ArrowLeft size={15} /> Back to the team builder
+      <Link
+        className="back-to-teams gallery-back-button"
+        to="/teams"
+        aria-label="Back to the team builder"
+      >
+        <span className="gallery-back-icon">
+          <ArrowLeft size={17} />
+        </span>
+        <span>
+          <small>YOUR NEXT ADVENTURE</small>Back to the team builder
+        </span>
+        <span className="pokeball-mark" aria-hidden="true" />
       </Link>
       <div className="gallery-intro">
         <div>
@@ -74,9 +84,23 @@ export default function TeamGallery() {
           <p>All Prabh’s generation teams, together with the teams saved in your browser.</p>
         </div>
         <div className="gallery-book-mark" aria-hidden="true">
-          <span className="pokeball-mark" />
-          <small>TEAM / ARCHIVE</small>
-          <strong>01—09</strong>
+          <span className="archive-device-heading">
+            <span className="archive-lights">
+              <i />
+              <i />
+              <i />
+            </span>{' '}
+            TRAINER ARCHIVE
+          </span>
+          <span className="archive-display">
+            <span className="archive-ring" />
+            <span className="pokeball-mark" />
+          </span>
+          <span className="archive-device-index">
+            <small>TEAM / ARCHIVE</small>
+            <strong>01—09</strong>
+          </span>
+          <span className="archive-device-footer">9 REGIONS · SPECIAL FORMS</span>
         </div>
       </div>
       <div className="gallery-filters">
@@ -122,7 +146,7 @@ export default function TeamGallery() {
             </h2>
             <span>Original templates · editable copies</span>
           </div>
-          <div className="team-gallery-grid">
+          <div className={`team-gallery-grid ${presets.length === 1 ? 'single-team-view' : ''}`}>
             {presets.map((group) => {
               const existing = state.teams.some((team) => team.source === group.id);
               return (
@@ -166,7 +190,7 @@ export default function TeamGallery() {
               <Plus size={13} /> Create another team
             </Link>
           </div>
-          <div className="team-gallery-grid">
+          <div className={`team-gallery-grid ${local.length === 1 ? 'single-team-view' : ''}`}>
             {local.map((team) => (
               <article className="team-gallery-card saved-gallery-card" key={team.id}>
                 <div className="gallery-card-meta">
