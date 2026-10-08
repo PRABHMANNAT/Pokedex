@@ -82,7 +82,11 @@ export default function TeamGallery() {
       <div className="gallery-filters">
         <label>
           Created by
-          <select value={creator} onChange={(event) => change('creator', event.target.value)}>
+          <select
+            aria-label="Created by"
+            value={creator}
+            onChange={(event) => change('creator', event.target.value)}
+          >
             <option value="">All teams</option>
             <option value="prabh">Prabh’s presets</option>
             <option value="saved">Saved in this browser</option>
@@ -90,7 +94,11 @@ export default function TeamGallery() {
         </label>
         <label>
           Generation
-          <select value={generation} onChange={(event) => change('gen', event.target.value)}>
+          <select
+            aria-label="Generation"
+            value={generation}
+            onChange={(event) => change('gen', event.target.value)}
+          >
             <option value="">All generations</option>
             {REGIONS.map((region, index) => (
               <option key={region} value={index + 1}>

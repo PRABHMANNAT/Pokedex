@@ -12,15 +12,32 @@ const context = await browser.newContext({
 });
 const page = await context.newPage();
 const errors = [];
+const visibleArtworkReady = async () => {
+  await page.waitForFunction(() =>
+    Array.from(document.images)
+      .filter(
+        (img) =>
+          img.getBoundingClientRect().top < innerHeight && img.getBoundingClientRect().bottom > 0,
+      )
+      .every((img) => img.complete && img.naturalWidth > 0),
+  );
+  await page.evaluate(async () => {
+    await Promise.all(
+      Array.from(document.images)
+        .filter(
+          (img) =>
+            img.getBoundingClientRect().top < innerHeight && img.getBoundingClientRect().bottom > 0,
+        )
+        .map((img) => img.decode().catch(() => {})),
+    );
+    await new Promise(requestAnimationFrame);
+  });
+};
 page.on('pageerror', (error) => errors.push(error.message));
 await page.goto(process.env.CAPTURE_URL || 'http://127.0.0.1:5173/');
 await page.locator('.pokemon-card').first().waitFor();
 await page.evaluate(() => document.fonts.ready);
-await page.waitForFunction(() =>
-  Array.from(document.images)
-    .filter((img) => img.getBoundingClientRect().top < innerHeight)
-    .every((img) => img.complete),
-);
+await visibleArtworkReady();
 await page.screenshot({
   path: fileURLToPath(new URL('../docs/images/desktop.png', import.meta.url)),
 });
@@ -36,6 +53,7 @@ await page.locator('.panel-art img').waitFor();
 await page.waitForFunction(
   () => !document.querySelector('.flavor-text')?.textContent.includes('Fetching'),
 );
+await visibleArtworkReady();
 await page.screenshot({
   path: fileURLToPath(new URL('../docs/images/details.png', import.meta.url)),
 });
@@ -54,14 +72,22 @@ const captureRoot = process.env.CAPTURE_URL || 'http://127.0.0.1:5173/';
 for (const [route, filename] of [
   ['teams', 'teams.png'],
   ['picks', 'developer-picks.png'],
+  ['teams/all', 'team-collection.png'],
 ]) {
   await page.goto(new URL(route, captureRoot).href);
+  await page
+    .locator(
+      route === 'teams'
+        ? '.team-workbench'
+        : route === 'picks'
+          ? '.developer-picks-grid'
+          : '.team-gallery-grid',
+    )
+    .first()
+    .waitFor();
   await page.evaluate(() => document.fonts.ready);
-  await page.waitForFunction(() =>
-    Array.from(document.images)
-      .filter((img) => img.getBoundingClientRect().top < innerHeight)
-      .every((img) => img.complete),
-  );
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+  await visibleArtworkReady();
   await page.screenshot({
     path: fileURLToPath(new URL(`../docs/images/${filename}`, import.meta.url)),
   });
@@ -69,8 +95,14 @@ for (const [route, filename] of [
 await page.goto(new URL('teams', captureRoot).href);
 await page.setViewportSize({ width: 390, height: 844 });
 await page.locator('.team-workbench').scrollIntoViewIfNeeded();
+await visibleArtworkReady();
 await page.screenshot({
   path: fileURLToPath(new URL('../docs/images/mobile-team.png', import.meta.url)),
+});
+await page.setViewportSize({ width: 1440, height: 450 });
+await page.locator('.site-footer').scrollIntoViewIfNeeded();
+await page.screenshot({
+  path: fileURLToPath(new URL('../docs/images/footer.png', import.meta.url)),
 });
 await browser.close();
 if (errors.length) throw new Error(errors.join('\n'));

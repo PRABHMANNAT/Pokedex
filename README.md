@@ -64,6 +64,10 @@ Teams save **only in your browser**, without an account. Share links include the
 
 [Team builder & data notes](docs/TEAMS.md)
 
+Browse every regional starter team together in the **team collection**, then filter Prabh’s templates or your browser-saved lineups by generation. The editor’s team selector now offers every region directly, while keeping your edited copies intact.
+
+<img src="docs/images/team-collection.png" alt="All-generation team collection with creator and generation filters, six-member previews and editable local copies" width="100%" />
+
 <img src="docs/images/mobile-team.png" alt="The six-slot team editor on a pocket-sized mobile screen" width="280" />
 
 ## Your first encounter

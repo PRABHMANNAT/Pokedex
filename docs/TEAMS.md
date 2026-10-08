@@ -10,6 +10,8 @@ Open `/teams` to create a team without signing in. A new browser starts with **P
 - Add Pokémon from the explorer, detail notes, or developer notebook. Full teams link back to the editor so you can make room.
 - Copy a share link. Importing a shared team requires pressing **Save shared team** and never silently replaces an existing lineup.
 - Use `/picks?region=hoenn` (or another notebook region) for personal favorites and one-click starter teams. The tenth group is Gigantamax.
+- The **Choose a team** selector lists both your saves and every regional preset. Selecting a preset opens its existing local copy if available, preserving edits; otherwise it creates an editable copy without replacing another team.
+- **View all generation teams** opens `/teams/all`, a visual collection of all ten Prabh templates and your saved lineups. Filter by creator/source and generation. Custom saved teams match generations represented by their companions; preset copies follow their notebook region. This is not a public directory of strangers' teams.
 
 ## Source and forms
 
