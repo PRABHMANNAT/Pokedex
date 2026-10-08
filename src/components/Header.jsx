@@ -1,4 +1,4 @@
-import { ArrowUpRight, Star } from 'lucide-react';
+import { ArrowUpRight, Github, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { REPOSITORY } from '../lib/pokemon';
@@ -28,9 +28,10 @@ export default function Header({ theme, toggleTheme }) {
           <span className="header-divider" />
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <a className="github-button" href={REPOSITORY} target="_blank" rel="noreferrer">
-            <Star size={15} />
+            <span className="github-button-icon"><Github size={17} /></span>
             <span>Star on GitHub</span>
-            <ArrowUpRight size={14} />
+            <span className="github-star"><Star size={13} /></span>
+            <ArrowUpRight size={13} />
           </a>
         </nav>
       </div>

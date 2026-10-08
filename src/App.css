@@ -72,16 +72,23 @@
   align-items: center;
   gap: 9px;
   border: 1px solid var(--line);
-  padding: 10px 14px;
+  padding: 6px 10px 6px 6px;
   border-radius: 8px;
-  background: var(--surface);
+  background: var(--text);
+  color: var(--page);
   font-size: 12px;
   font-weight: 600;
   transition: border-color 0.2s;
 }
 .github-button:hover {
   border-color: var(--accent);
+  box-shadow: 0 4px 0 var(--accent-soft);
 }
+.github-button-icon { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 5px; background: color-mix(in srgb, var(--page) 12%, transparent); }
+.github-star { display: grid; place-items: center; width: 24px; height: 24px; color: #e7be6b; border-left: 1px solid color-mix(in srgb, var(--page) 20%, transparent); padding-left: 9px; margin-right: 4px; }
+.maker-credit { font-size: 10px; line-height: 1.7; }
+.maker-credit > a { display: inline !important; font-weight: 650; color: var(--text); }
+.maker-credit small { display: flex; align-items: center; gap: 5px; font-size: 9px; }
 .github-button > svg:first-child {
   color: #b89851;
 }

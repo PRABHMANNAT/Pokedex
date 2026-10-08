@@ -47,7 +47,7 @@ export default function App() {
         <div>
           <span className="footer-brand">pokédex.</span>
           <span>
-            Made for the love of Pokémon <Heart size={12} />
+            <span className="maker-credit">Made by <a href="https://github.com/PRABHMANNAT" target="_blank" rel="noreferrer">Prabhmannat Singh</a><small>With a lot of time, care, and love <Heart size={11} /></small></span>
           </span>
         </div>
         <p>An independent fan project. Pokémon © Nintendo / Creatures / GAME FREAK.</p>
