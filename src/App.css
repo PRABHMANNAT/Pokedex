@@ -255,23 +255,11 @@
 .hero-art:hover .hero-charizard {
   transform: rotate(-4deg) translateY(-5px);
 }
-.hero-stamp {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  bottom: 93px;
-  left: 24px;
-  padding: 8px 11px;
-  background: #fff7e6b8;
-  border: 1px solid #987a3925;
-  border-radius: 6px;
-  transform: rotate(-5deg);
-  color: #745a35;
-  font-size: 8px;
-  font-weight: 650;
-  letter-spacing: 0.7px;
-}
+.encounter-button { padding: 6px 11px 6px 6px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 3px 0 var(--line); gap: 9px; }
+.encounter-icon { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 6px; background: var(--accent-soft); color: var(--accent); }
+.encounter-arrow { display: grid; place-items: center; color: var(--muted); margin-left: 4px; }
+.encounter-button:hover { border-color: var(--accent); }
+.encounter-button:hover .encounter-icon svg { transform: rotate(-12deg); }
 .hero-art-bottom {
   position: absolute;
   bottom: 0;

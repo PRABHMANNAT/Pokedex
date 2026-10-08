@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Shuffle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import catalog from '../data/catalog.json';
 
@@ -23,8 +23,9 @@ export default function Hero({ onRandom }) {
           <a className="button button-primary" href="#pokedex">
             Explore the Pokédex <ArrowDown size={16} />
           </a>
-          <button className="button button-plain" onClick={onRandom}>
-            <Sparkles size={16} /> Surprise me <ArrowUpRight size={14} />
+          <button className="button encounter-button" onClick={onRandom}>
+            <span className="encounter-icon"><Shuffle size={16} /></span> Surprise me
+            <span className="encounter-arrow"><ArrowUpRight size={14} /></span>
           </button>
         </div>
         <div className="hero-facts">
@@ -63,9 +64,6 @@ export default function Hero({ onRandom }) {
           height="475"
           fetchPriority="high"
         />
-        <span className="hero-stamp">
-          <Sparkles size={13} /> A CLASSIC, FOR A REASON
-        </span>
         <span className="hero-art-bottom">
           <span>
             <strong>Charizard</strong>
