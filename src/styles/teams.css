@@ -186,6 +186,13 @@
   color: var(--muted);
   margin-bottom: 8px;
 }
+.team-select-hint {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.6;
+}
 .team-page select,
 .team-page input {
   color: var(--text);

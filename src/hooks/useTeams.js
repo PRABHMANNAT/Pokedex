@@ -67,5 +67,13 @@ export default function useTeams() {
     addMember,
     createTeam,
     applyPreset: (group) => createTeam(`Prabh’s ${group.name} six`, starterKeys(group), group.id),
+    openPreset: (group) => {
+      const saved = state.teams.find((team) => team.source === group.id);
+      if (saved) {
+        dispatch({ type: 'select', id: saved.id });
+        return true;
+      }
+      return createTeam(`Prabh’s ${group.name} six`, starterKeys(group), group.id);
+    },
   };
 }

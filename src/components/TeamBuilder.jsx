@@ -13,10 +13,19 @@ import {
 import TeamSlot from './TeamSlot';
 import TeamPicker from './TeamPicker';
 import TypeBadge from './TypeBadge';
+import { DEVELOPER_GROUPS } from '../data/developerPicks';
 
 export default function TeamBuilder() {
-  const { state, activeTeam, createTeam, addMember, dispatch, storageAvailable, setNotice } =
-    useContext(TeamContext);
+  const {
+    state,
+    activeTeam,
+    createTeam,
+    addMember,
+    dispatch,
+    storageAvailable,
+    setNotice,
+    openPreset,
+  } = useContext(TeamContext);
   const [params, setParams] = useSearchParams();
   const shared = parseSharedTeam(params);
   const candidate = resolveMember(params.get('candidate'));
@@ -123,18 +132,37 @@ export default function TeamBuilder() {
       <section className="team-workbench" aria-labelledby="team-name">
         <div className="workbench-toolbar">
           <div>
-            <label htmlFor="active-team">YOUR SAVED TEAMS</label>
+            <label htmlFor="active-team">CHOOSE A TEAM</label>
             <select
               id="active-team"
               value={state.activeId}
-              onChange={(event) => dispatch({ type: 'select', id: event.target.value })}
+              onChange={(event) => {
+                const group = DEVELOPER_GROUPS.find(
+                  (group) => `preset:${group.id}` === event.target.value,
+                );
+                if (group) openPreset(group);
+                else dispatch({ type: 'select', id: event.target.value });
+              }}
             >
-              {state.teams.map((team) => (
-                <option key={team.id} value={team.id}>
-                  {team.name}
-                </option>
-              ))}
+              <optgroup label="Your saved teams">
+                {state.teams.map((team) => (
+                  <option key={team.id} value={team.id}>
+                    {team.name}
+                  </option>
+                ))}
+              </optgroup>
+              <optgroup label="Prabh’s generation teams">
+                {DEVELOPER_GROUPS.map((group) => (
+                  <option key={group.id} value={`preset:${group.id}`}>
+                    {group.generation ? `Gen ${group.generation} · ` : ''}
+                    {group.name} · Prabh’s six
+                  </option>
+                ))}
+              </optgroup>
             </select>
+            <small className="team-select-hint">
+              Your saved teams + all nine generations and Gigantamax.
+            </small>
           </div>
           <button
             className="button button-primary create-team-button"
