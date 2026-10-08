@@ -4,6 +4,91 @@
   flex-wrap: wrap;
   gap: 10px;
 }
+.notebook-invitation {
+  position: relative;
+  width: 350px;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 25px 27px 22px 34px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--surface), var(--accent-soft));
+  box-shadow:
+    0 4px 0 var(--line),
+    0 14px 35px #00000004;
+  border-radius: 5px 16px 16px 5px;
+}
+.notebook-invitation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 7px;
+  background: var(--accent);
+}
+.notebook-heading {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 1.5px;
+}
+.notebook-heading > span {
+  margin-left: auto;
+  font-size: 6px;
+  letter-spacing: 1px;
+}
+.notebook-invitation > strong {
+  margin-top: 20px;
+  font:
+    800 29px/1.18 'Manrope',
+    sans-serif;
+  letter-spacing: -1.1px;
+}
+.notebook-invitation strong > span {
+  color: var(--accent);
+}
+.notebook-invitation > p {
+  margin: 13px 0 5px;
+  font-size: 11px;
+  line-height: 1.8;
+}
+.notebook-companions {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 9px 0 14px;
+}
+.notebook-companions img {
+  width: 61px;
+  height: 61px;
+  object-fit: contain;
+}
+.notebook-invitation > .notebook-cta {
+  justify-content: space-between;
+  padding-top: 13px;
+  border-top: 1px solid var(--line);
+  font:
+    700 11px 'Manrope',
+    sans-serif;
+  color: var(--text);
+}
+.notebook-cta > span {
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  color: var(--accent);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.notebook-invitation:hover .notebook-cta > span {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
 .all-teams-button {
   font-size: 11px;
   padding: 12px 15px;

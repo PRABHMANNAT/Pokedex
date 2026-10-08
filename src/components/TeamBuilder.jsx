@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { ArrowRight, Check, Copy, Heart, Plus, ShieldCheck, Trash2, X } from 'lucide-react';
+import { ArrowRight, Check, Copy, Plus, ShieldCheck, Trash2, X } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { TeamContext } from '../context/TeamContext';
 import {
@@ -13,6 +13,7 @@ import {
 import TeamSlot from './TeamSlot';
 import TeamPicker from './TeamPicker';
 import TypeBadge from './TypeBadge';
+import NotebookInvitation from './NotebookInvitation';
 import { DEVELOPER_GROUPS } from '../data/developerPicks';
 
 export default function TeamBuilder() {
@@ -65,9 +66,6 @@ export default function TeamBuilder() {
     <main className="page-shell team-page">
       <div className="team-page-intro">
         <div>
-          <div className="eyebrow">
-            <span className="status-dot" /> SIX COMPANIONS. A THOUSAND POSSIBILITIES.
-          </div>
           <h1>
             Your six.
             <br />
@@ -85,20 +83,7 @@ export default function TeamBuilder() {
               : 'Storage unavailable · Your team works for this session'}
           </div>
         </div>
-        <Link to="/picks" className="developer-invitation">
-          <span className="eyebrow">
-            <Heart size={12} /> FROM THE DEVELOPER’S NOTEBOOK
-          </span>
-          <strong>Meet Prabh’s picks.</strong>
-          <p>
-            Nine regions, some special forms,
-            <br />
-            and a whole lot of favorites.
-          </p>
-          <span>
-            Find your inspiration <ArrowRight size={16} />
-          </span>
-        </Link>
+        <NotebookInvitation />
       </div>
       {shared && (
         <section className="shared-team-banner" aria-label="Shared team">
