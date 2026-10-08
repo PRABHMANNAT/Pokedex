@@ -25,8 +25,11 @@ await page.screenshot({
   path: fileURLToPath(new URL('../docs/images/desktop.png', import.meta.url)),
 });
 await page.getByRole('switch', { name: 'Night mode' }).click();
+await page.waitForFunction(() => document.documentElement.dataset.theme === 'dark');
+await page.waitForTimeout(350); // Let theme color transitions settle before the still capture.
 await page.screenshot({ path: fileURLToPath(new URL('../docs/images/dark.png', import.meta.url)) });
 await page.getByRole('switch', { name: 'Night mode' }).click();
+await page.waitForTimeout(350);
 await page.getByRole('link', { name: 'Meet Charizard' }).click();
 await page.getByRole('dialog').waitFor();
 await page.locator('.panel-art img').waitFor();

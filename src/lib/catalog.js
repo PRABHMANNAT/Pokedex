@@ -1,4 +1,4 @@
-import { totalStats } from './pokemon.js';
+import { totalStats, TYPES } from './pokemon.js';
 
 export function filterCatalog(
   catalog,
@@ -8,6 +8,8 @@ export function filterCatalog(
   const normalized = query
     .trim()
     .toLowerCase()
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
     .replace(/[^a-z0-9]/g, '');
   const ids = new Set(favorites);
   const results = catalog.filter((pokemon) => {
@@ -34,12 +36,16 @@ export function filterCatalog(
 }
 
 export function readFilters(params) {
+  const type = params.get('type');
+  const generation = params.get('gen');
+  const sort = params.get('sort');
+  const rarity = params.get('rarity');
   return {
-    query: params.get('q') || '',
-    type: params.get('type') || '',
-    generation: params.get('gen') || '',
-    sort: params.get('sort') || 'number',
-    rarity: params.get('rarity') || '',
+    query: (params.get('q') || '').slice(0, 100),
+    type: Object.hasOwn(TYPES, type) ? type : '',
+    generation: /^[1-9]$/.test(generation) ? generation : '',
+    sort: ['number', 'reverse', 'name', 'power'].includes(sort) ? sort : 'number',
+    rarity: ['legendary', 'mythical'].includes(rarity) ? rarity : '',
     collection: params.get('view') === 'collection',
   };
 }

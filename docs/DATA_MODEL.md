@@ -2,18 +2,18 @@
 
 The catalog is a checked-in snapshot of 1,025 default National Pokédex entries from [PokéAPI's CSV repository](https://github.com/PokeAPI/pokeapi/tree/master/data/v2/csv). Alternate forms and Mega evolutions are outside this snapshot.
 
-| Field | Type | Meaning |
-| --- | --- | --- |
-| `id` | integer | Unique National Pokédex number, 1–1025. |
-| `name` | string | PokéAPI identifier, e.g. `mr-mime`. |
-| `types` | string[] | One or two elemental types, primary first. |
-| `generation` | integer | Original generation, 1–9. Hisui species are grouped with Gen 8. |
-| `height` | integer | Height in decimeters; display divides by 10. |
-| `weight` | integer | Weight in hectograms; display divides by 10. |
-| `stats` | integer[6] | HP, Attack, Defense, Special Attack, Special Defense, Speed. |
-| `abilities` | object[] | `{ name, hidden }` ability identifiers and hidden-ability flag. |
-| `evolvesFrom` | integer or null | National ID of the preceding species. Connections do not imply evolution conditions. |
-| `legendary`, `mythical` | boolean | Species categories from PokéAPI. |
+| Field                   | Type            | Meaning                                                                              |
+| ----------------------- | --------------- | ------------------------------------------------------------------------------------ |
+| `id`                    | integer         | Unique National Pokédex number, 1–1025.                                              |
+| `name`                  | string          | PokéAPI identifier, e.g. `mr-mime`.                                                  |
+| `types`                 | string[]        | One or two elemental types, primary first.                                           |
+| `generation`            | integer         | Original generation, 1–9. Hisui species are grouped with Gen 8.                      |
+| `height`                | integer         | Height in decimeters; display divides by 10.                                         |
+| `weight`                | integer         | Weight in hectograms; display divides by 10.                                         |
+| `stats`                 | integer[6]      | HP, Attack, Defense, Special Attack, Special Defense, Speed.                         |
+| `abilities`             | object[]        | `{ name, hidden }` ability identifiers and hidden-ability flag.                      |
+| `evolvesFrom`           | integer or null | National ID of the preceding species. Connections do not imply evolution conditions. |
+| `legendary`, `mythical` | boolean         | Species categories from PokéAPI.                                                     |
 
 `effectiveness.json` maps attacking type → defending type → multiplier. Dual-type defenses multiply the two factors. This describes type matchups, not the effects of abilities, moves, or battle state.
 

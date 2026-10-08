@@ -1,6 +1,21 @@
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
+  // Make automated UI journeys independent of external artwork/API availability.
+  // The README capture script uses real network data and original source images.
+  await page.route('https://raw.githubusercontent.com/PokeAPI/sprites/**', (route) =>
+    route.fulfill({ path: 'public/brand/pikachu.png', contentType: 'image/png' }),
+  );
+  await page.route('https://pokeapi.co/api/v2/pokemon-species/*', (route) =>
+    route.fulfill({
+      json: {
+        flavor_text_entries: [{ language: { name: 'en' }, flavor_text: 'A Pokémon field note.' }],
+        genera: [{ language: { name: 'en' }, genus: 'Pokémon' }],
+        habitat: { name: 'forest' },
+        capture_rate: 45,
+      },
+    }),
+  );
   await page.goto('/');
 });
 

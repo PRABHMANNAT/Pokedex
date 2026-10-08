@@ -24,6 +24,7 @@ test('search reaches unloaded late generations and padded national numbers', () 
   assert.equal(filterCatalog(catalog, { query: 'Pecharunt' })[0].id, 1025);
   assert.equal(filterCatalog(catalog, { query: ' #0025 ' })[0].name, 'pikachu');
   assert.equal(filterCatalog(catalog, { query: 'Mr. Mime' })[0].id, 122);
+  assert.equal(filterCatalog(catalog, { query: 'Flabébé' })[0].id, 669);
   assert.equal(filterCatalog(catalog, { query: 'unfindable' }).length, 0);
 });
 
@@ -73,6 +74,20 @@ test('URLs restore combinations and gendered names remain readable', () => {
     },
   );
   assert.equal(formatName('nidoran-f'), 'Nidoran ♀');
+});
+
+test('unsupported URL values fall back to usable explorer defaults', () => {
+  assert.deepEqual(
+    readFilters(new URLSearchParams('type=toString&gen=999&sort=unknown&rarity=rare')),
+    {
+      query: '',
+      type: '',
+      generation: '',
+      sort: 'number',
+      rarity: '',
+      collection: false,
+    },
+  );
 });
 
 test('malformed and denied local storage do not break browsing', () => {

@@ -6,7 +6,9 @@ const cache = new Map();
 
 export async function fetchSpecies(id, signal) {
   if (cache.has(id)) return cache.get(id);
-  const response = await fetch(`${BASE}/pokemon-species/${id}`, { signal });
+  const response = await fetch(`${BASE}/pokemon-species/${id}`, {
+    signal: AbortSignal.any([signal, AbortSignal.timeout(12000)]),
+  });
   if (!response.ok) throw new Error(`Species request failed (${response.status})`);
   const data = await response.json();
   const entry = data.flavor_text_entries.find((entry) => entry.language.name === 'en');
