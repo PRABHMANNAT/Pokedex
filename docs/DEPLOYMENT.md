@@ -2,6 +2,14 @@
 
 `npm run build` produces a static application in `dist/`. No backend, API key, or secrets are required.
 
+## Download a verified production build
+
+Successful **Quality checks** runs on GitHub save a `pokedex-production` artifact for 30 days. Open the latest successful run in **Actions → Quality checks**, then download it from the **Artifacts** section. Unzip it to obtain the production site's `index.html`, bundled assets, and public files.
+
+The workflow runs the browser suite against `vite preview`, testing the compiled production files before uploading them. For the same local check, build first, then set `PLAYWRIGHT_PRODUCTION=1` when running `npm run test:e2e`.
+
+This artifact uses the default root base `/`. It is ready for a root-domain static host with an SPA fallback to `index.html`. It is not the `/Pokedex/` project-Pages build; use the publish workflow below for that. Uploading a build artifact does not deploy the website. Generated `dist/` files remain excluded from Git history.
+
 ## GitHub project Pages
 
 This repository includes a **manual** publish workflow. A push to `main` runs quality checks but does not publish a website automatically.
