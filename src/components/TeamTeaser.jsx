@@ -20,7 +20,8 @@ export default function TeamTeaser() {
         <small>Build your own, or begin with Prabh’s favorites. No login needed.</small>
       </span>
       <span className="teaser-link">
-        Build your team <ArrowUpRight size={16} />
+        <span className="pokeball-mark" aria-hidden="true" />
+        Build your team <ArrowUpRight size={16} aria-hidden="true" />
       </span>
     </Link>
   );

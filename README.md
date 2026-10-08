@@ -4,7 +4,7 @@
 
 # Pokédex · A Trainer’s Field Guide
 
-**Little creatures. Endless discovery.**
+**Find your favorites. Build your adventure.**
 
 A Pokémon field guide for collectors, curious trainers, and your next favorite team.<br />
 Explore 1,025 Pokémon. Build your six. Discover every generation.<br />
@@ -104,7 +104,7 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-The browser suite covers discovery, filters, collection persistence, themes, modal focus, direct routes, network failure, team editing, lead ordering, sharing, storage failures, developer presets, collection filters, responsive team previews, and reduced-motion behavior. **17 unit tests and 20 browser journeys** run in GitHub’s quality checks.
+The browser suite covers discovery, filters, collection persistence, themes, modal focus, direct routes, network failure, team editing, lead ordering, sharing, storage failures, developer presets, collection filters, responsive team previews, keyboard navigation, and reduced-motion behavior. **17 unit tests and 21 browser journeys** run in GitHub’s quality checks.
 
 ## Under the cover
 

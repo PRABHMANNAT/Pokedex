@@ -21,7 +21,7 @@ test.beforeEach(async ({ page }) => {
 
 test('global search, combined filters, sorting, pagination and reset', async ({ page }) => {
   await expect(
-    page.getByRole('heading', { name: 'Little creatures. Endless discovery.' }),
+    page.getByRole('heading', { name: 'Find your favorites. Build your adventure.' }),
   ).toBeVisible();
   await expect(page.locator('.pokemon-card')).toHaveCount(24);
   await page.getByRole('button', { name: 'Discover more' }).click();

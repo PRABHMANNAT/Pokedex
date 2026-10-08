@@ -7,6 +7,35 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/');
 });
 
+test('team call-to-action is highlighted, fits small screens, and opens the builder', async ({
+  page,
+}) => {
+  await page.goto('/?sort=power');
+  await expect(
+    page.getByRole('heading', { name: 'Find your favorites. Build your adventure.' }),
+  ).toBeVisible();
+  const teaser = page.locator('.team-teaser');
+  const cta = teaser.locator('.teaser-link');
+  for (const width of [1440, 920, 700, 390, 360]) {
+    await page.setViewportSize({ width, height: 900 });
+    await expect(cta).toBeVisible();
+    const box = await cta.boundingBox();
+    expect(box.height).toBeGreaterThanOrEqual(44);
+    expect(box.x + box.width).toBeLessThanOrEqual(width);
+    expect(await cta.evaluate((element) => getComputedStyle(element).backgroundColor)).not.toBe(
+      'rgba(0, 0, 0, 0)',
+    );
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+  }
+  await teaser.focus();
+  await expect(teaser).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/\/teams$/);
+  await expect(page.locator('.team-workbench')).toBeVisible();
+});
+
 test('refresh changes the feature and keeps its name, artwork and encounter link aligned', async ({
   page,
 }) => {

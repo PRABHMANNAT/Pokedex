@@ -19,9 +19,9 @@ export default function Hero({ onRandom }) {
           <span className="status-dot" /> THE WORLD OF POKÉMON, AT YOUR FINGERTIPS
         </div>
         <h1 id="hero-title">
-          Little creatures.
+          Find your favorites.
           <br />
-          <span>Endless discovery.</span>
+          <span>Build your adventure.</span>
         </h1>
         <p>
           Your next favorite is out there. Explore every Pokémon,

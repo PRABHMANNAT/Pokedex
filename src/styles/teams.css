@@ -86,10 +86,31 @@
   align-items: center;
   gap: 12px;
   margin-left: auto;
-  color: var(--accent);
+  padding: 13px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 9px;
+  background: color-mix(in srgb, var(--accent) 85%, var(--text));
+  color: var(--page);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--accent) 35%, var(--line));
+  flex-shrink: 0;
   font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
+}
+.teaser-link > .pokeball-mark {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.team-teaser:hover .teaser-link,
+.team-teaser:focus-visible .teaser-link {
+  background: var(--text);
+  border-color: var(--text);
+  box-shadow: 0 3px 0 var(--line);
+}
+.team-teaser:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 .team-page,
 .developer-page {
