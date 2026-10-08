@@ -11,9 +11,6 @@
   .hero {
     gap: 35px;
   }
-  .hero-charizard {
-    right: 40px;
-  }
 }
 @media (min-width: 1600px) {
   .page-shell,
@@ -45,12 +42,6 @@
   }
   .hero-art {
     min-height: 320px;
-  }
-  .hero-charizard {
-    width: 285px;
-    height: 285px;
-    right: 15px;
-    top: 0;
   }
   .hero-actions {
     gap: 9px;
@@ -170,17 +161,14 @@
     min-height: 265px;
     max-height: 265px;
   }
-  .hero-charizard {
-    width: 265px;
-    height: 265px;
-    top: -15px;
-    right: calc(50% - 125px);
+  .hero-art-stage {
+    inset: 46px 45px 65px;
   }
   .hero-art-orbit {
     width: 215px;
     height: 215px;
-    right: calc(50% - 110px);
-    top: 5px;
+    left: calc(50% - 107.5px);
+    top: calc(50% - 107.5px - 10px);
   }
   .hero-art-bottom {
     padding: 12px 20px;
@@ -189,8 +177,10 @@
     font-size: 20px;
   }
   .hero-japanese {
-    top: 43px;
-    font-size: 23px;
+    top: 47px;
+    bottom: 70px;
+    right: 12px;
+    font-size: 17px;
   }
   .catalog-intro h2 {
     font-size: 27px;

@@ -61,14 +61,16 @@ export default function Hero({ onRandom }) {
           width="80"
           height="30"
         />
-        <img
-          className="hero-charizard"
-          src={`${base}brand/charizard.png`}
-          alt="Official Charizard artwork"
-          width="475"
-          height="475"
-          fetchPriority="high"
-        />
+        <span className="hero-art-stage">
+          <img
+            className="hero-charizard"
+            src={`${base}brand/charizard.png`}
+            alt="Official Charizard artwork"
+            width="475"
+            height="475"
+            fetchPriority="high"
+          />
+        </span>
         <span className="hero-art-bottom">
           <span>
             <strong>Charizard</strong>

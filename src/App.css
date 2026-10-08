@@ -242,8 +242,8 @@
   border: 1px solid #9d7e4430;
   border-radius: 50%;
   position: absolute;
-  top: 30px;
-  right: 64px;
+  top: calc(50% - 135px - 18px);
+  left: calc(50% - 135px);
   background: #f6ead225;
   box-shadow:
     0 0 0 18px #d7bf8620,
@@ -251,13 +251,18 @@
 }
 .hero-japanese {
   position: absolute;
-  top: 70px;
-  right: 18px;
+  top: 65px;
+  bottom: 88px;
+  right: 15px;
   writing-mode: vertical-rl;
-  font-size: 30px;
-  letter-spacing: 8px;
-  opacity: 0.18;
+  font-size: 21px;
+  letter-spacing: 5px;
+  opacity: 0.8;
   font-weight: 700;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .art-label {
   position: absolute;
@@ -276,19 +281,23 @@
   top: 19px;
   z-index: 2;
 }
-.hero-charizard {
+.hero-art-stage {
   position: absolute;
-  width: 315px;
-  height: 315px;
+  inset: 49px 52px 85px;
+  display: grid;
+  place-items: center;
+}
+.hero-charizard {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
   object-fit: contain;
-  top: -2px;
-  right: 68px;
-  transform: rotate(-7deg);
   filter: drop-shadow(0 18px 13px #92683c22);
   transition: transform 0.35s;
 }
 .hero-art:hover .hero-charizard {
-  transform: rotate(-4deg) translateY(-5px);
+  transform: translateY(-3px);
 }
 .encounter-button {
   padding: 6px 11px 6px 6px;
