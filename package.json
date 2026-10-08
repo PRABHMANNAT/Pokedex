@@ -19,6 +19,7 @@
     "test:e2e": "playwright test",
     "preview": "vite preview",
     "data:sync": "node scripts/sync-catalog.mjs",
+    "data:forms": "node scripts/sync-pick-forms.mjs",
     "format": "prettier --write src scripts tests *.js *.json *.html *.md .github"
   },
   "dependencies": {

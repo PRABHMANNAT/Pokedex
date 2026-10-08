@@ -33,6 +33,8 @@ Your next favorite might be in Kanto. Or it might be #1025. Search the **entire 
 | --- | --- |
 | **Find your next favorite** | Search by name or National ID; combine all 18 type filters with nine generations and legendary/mythical categories. |
 | **Make it yours** | Save Pokémon to a local collection with one tap. Your collection survives reloads and syncs across browser tabs. |
+| **Build your six** | Create named, login-free teams, choose a lead, compare type diversity and shared weaknesses, and share a team link. |
+| **Meet the developer’s picks** | Explore Prabh’s personal favorites across nine regions and Gigantamax forms, with editable six-member starter teams. |
 | **Look a little closer** | Open field notes with six base stats, abilities, height, weight, type weaknesses, and evolution connections. |
 | **Chase a different sparkle** | Switch cards and detail artwork to shiny variants, where the source provides them. |
 | **Explore your way** | Sort by name, number, or base-stat total; use compact cards, load more entries, or meet a random Pokémon. |
@@ -49,6 +51,20 @@ Your next favorite might be in Kanto. Or it might be #1025. Search the **entire 
 <br />
 <sub>From a wide desktop to a pocket-sized screen.</sub>
 </div>
+
+## Six companions. Your own story.
+
+Start with **Prabh’s Kanto six**, then make it yours — or create a fresh team from any of the 1,025 Pokémon. Save multiple named teams, reorder your lead, and add companions from cards or field notes. The developer notebook preserves the favorites, shiny choices, and special forms from Prabhmannat’s personal team sheet.
+
+<img src="docs/images/teams.png" alt="Login-free six-member team builder with Prabh’s Kanto favorites, type diversity and shared weaknesses" width="100%" />
+
+<img src="docs/images/developer-picks.png" alt="Prabh’s developer notebook with regional favorites, Mega forms and editable starter sixes" width="100%" />
+
+Teams save **only in your browser**, without an account. Share links include the lineup and team name; anyone with the link can read them and save a separate copy. Clearing browser data removes your local teams. Type summaries are helpful starting points, not a battle simulator: abilities, moves, items, and special battle rules are not modeled.
+
+[Team builder & data notes](docs/TEAMS.md)
+
+<img src="docs/images/mobile-team.png" alt="The six-slot team editor on a pocket-sized mobile screen" width="280" />
 
 ## Your first encounter
 
@@ -77,7 +93,7 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-The browser suite covers discovery, combined filters, collection persistence, shiny mode, theme changes, modal focus, direct routes, network failure, and mobile layout.
+The browser suite covers discovery, filters, collection persistence, themes, modal focus, direct routes, network failure, team editing, lead ordering, sharing, storage failures, developer presets, and mobile layouts.
 
 ## Under the cover
 
@@ -102,9 +118,9 @@ docs/              Data schema, design notes, and screenshots
 - [Hosting guide](docs/DEPLOYMENT.md)
 - [Contributing](CONTRIBUTING.md)
 
-Run `npm run data:sync` to regenerate the catalog from PokéAPI. The generator intentionally pins the National Pokédex to **1,025 default entries** and validates the result. Alternate forms and battle-specific ability effects are outside this version.
+Run `npm run data:sync` to regenerate the catalog from PokéAPI. The generator pins the National Pokédex to **1,025 default entries** and validates the result. The developer notebook separately supports curated alternate forms; run `npm run data:forms` to refresh their types and stats. Battle-specific ability effects are not simulated.
 
-The index and saved collection remain usable if the species API is unavailable. Artwork and extra field notes need network access. Favorites stay in your browser; there is no account or cloud sync.
+The index, team builder and saved collection remain usable if the species API is unavailable. Artwork and extra field notes need network access. Favorites and teams stay in your browser; there is no account or cloud sync.
 
 ## A small invitation
 
@@ -119,7 +135,8 @@ If this field guide makes you smile, a [GitHub star](https://github.com/PRABHMAN
 <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Squirtle sprite" width="64" />
 <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Pikachu sprite" width="64" />
 
-<sub>An independent fan project. Pokémon © Nintendo / Creatures Inc. / GAME FREAK Inc.<br />
+<sub>Made by Prabhmannat Singh with a lot of time, care, and love.<br />
+An independent fan project. Pokémon © Nintendo / Creatures Inc. / GAME FREAK Inc.<br />
 See [asset attribution and original project credit](ATTRIBUTION.md). No affiliation or endorsement is implied.</sub>
 
 </div>
