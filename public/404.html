@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Returning to the Pokédex…</title>
+    <script>
+      // GitHub project Pages fallback: redirect to the index, then restore the SPA route.
+      const base = '/' + location.pathname.split('/').filter(Boolean)[0] + '/';
+      const route = location.pathname.slice(base.length - 1) + location.search + location.hash;
+      location.replace(base + '?_route=' + encodeURIComponent(route));
+    </script>
+  </head>
+  <body><p>Returning to the Pokédex…</p></body>
+</html>
