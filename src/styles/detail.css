@@ -1,0 +1,60 @@
+.pokemon-dialog { padding: 0; border: 1px solid var(--line); border-radius: 17px; background: var(--surface); color: var(--text); width: min(940px, calc(100vw - 36px)); max-height: calc(100dvh - 50px); box-shadow: 0 35px 100px #0005; }
+.pokemon-dialog::backdrop { background: #15251ecc; backdrop-filter: blur(7px); }
+.dialog-toolbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 21px; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 3; background: var(--surface); }
+.dialog-toolbar > span { font-size: 9px; font-weight: 550; letter-spacing: 1.5px; color: var(--muted); }
+.dialog-toolbar > div, .detail-nav > div { display: flex; align-items: center; gap: 5px; }
+.toolbar-divider { height: 19px; width: 1px; background: var(--line); margin: 0 7px; }
+.pokemon-panel { display: grid; grid-template-columns: .85fr 1fr; }
+.panel-art { background: color-mix(in srgb, var(--type-color) 12%, var(--surface)); position: relative; padding: 26px; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.panel-art::before { content: ''; position: absolute; width: 300px; height: 300px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--type-color) 20%, transparent); box-shadow: 0 0 0 30px color-mix(in srgb, var(--type-color) 5%, transparent); }
+.panel-art > img, .panel-art > .art-fallback { width: 330px; height: 330px; object-fit: contain; position: relative; z-index: 1; filter: drop-shadow(0 16px 12px #18231c22); }
+.panel-art-number { position: absolute; font: 800 135px 'Manrope', sans-serif; letter-spacing: -9px; top: 85px; color: color-mix(in srgb, var(--type-color) 14%, transparent); }
+.panel-art-meta { display: flex; justify-content: space-between; width: calc(100% - 42px); font-size: 8px; letter-spacing: 1px; position: absolute; top: 25px; color: var(--muted); }
+.panel-art-meta > span:last-child { text-transform: uppercase; }
+.shiny-button { position: relative; z-index: 1; border: 1px solid var(--line); background: var(--surface); font-size: 11px; margin-top: 35px; }
+.shiny-button.active { color: var(--accent); }
+.panel-info { padding: 30px; }
+.panel-title { display: flex; justify-content: space-between; align-items: center; }
+.panel-title .eyebrow { text-transform: uppercase; font-size: 9px; }
+.panel-title h2 { font-size: 32px; letter-spacing: -1.2px; font-weight: 800; margin: 5px 0 12px; }
+.panel-title .favorite-button { width: 40px; height: 40px; border: 1px solid var(--line); }
+.panel-types { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.panel-types .type-badge { font-size: 11px; padding: 5px 10px; }
+.rarity-badge { font-size: 9px; color: #a98b3f; border: 1px solid #ae924544; border-radius: 4px; padding: 5px 8px; }
+.flavor-text { font-size: 12px; line-height: 1.8; color: var(--muted); margin: 18px 0; min-height: 65px; }
+.physical-stats { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 14px; background: var(--surface-soft); border-radius: 9px; padding: 13px 16px; margin-bottom: 24px; }
+.physical-stats small { display: block; color: var(--muted); font-size: 8px; letter-spacing: 1px; margin-bottom: 7px; }
+.physical-stats strong { font-size: 15px; font-weight: 650; }
+.physical-stats i { font-style: normal; font-size: 10px; color: var(--muted); }
+.physical-stats .habitat { font-size: 12px; text-transform: capitalize; }
+.section-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.panel-info h3 { font: 700 13px 'Manrope', sans-serif; margin-bottom: 12px; }
+.section-heading h3 { margin-bottom: 0; }
+.section-heading > span { font-size: 10px; color: var(--muted); }
+.section-heading strong { color: var(--text); margin-left: 6px; }
+.stat-row { display: grid; grid-template-columns: 62px 30px 1fr; align-items: center; gap: 10px; margin-bottom: 11px; font-size: 10px; }
+.stat-row > span { color: var(--muted); }
+.stat-row strong { font-weight: 600; }
+meter { width: 100%; height: 7px; border: 0; border-radius: 10px; background: var(--surface-soft); }
+meter::-webkit-meter-bar { background: var(--surface-soft); border: 0; height: 7px; }
+meter::-webkit-meter-optimum-value { background: var(--stat-color); border-radius: 10px; }
+meter::-moz-meter-bar { background: var(--stat-color); border-radius: 10px; }
+.abilities-section, .weakness-section, .evolution-section { border-top: 1px solid var(--line); padding-top: 17px; margin-top: 20px; }
+.ability-list { display: flex; gap: 7px; flex-wrap: wrap; }
+.ability-list > span { padding: 7px 9px; background: var(--surface-soft); border: 1px solid var(--line); border-radius: 5px; font-size: 10px; }
+.ability-list small { display: inline-block; margin-left: 6px; color: var(--muted); font-size: 8px; }
+.weaknesses { display: flex; gap: 6px; flex-wrap: wrap; }
+.weaknesses > span { display: inline-flex; align-items: center; gap: 4px; }
+.weaknesses small { font-size: 9px; font-weight: 600; margin-right: 4px; }
+.fine-print { color: var(--muted); font-size: 9px; line-height: 1.7; margin-top: 12px; }
+.evolution-list { display: flex; flex-direction: column; gap: 7px; }
+.evolution-list button { border: 1px solid var(--line); border-radius: 7px; display: flex; align-items: center; gap: 11px; padding: 5px 12px; text-align: left; }
+.evolution-list button:hover { background: var(--surface-soft); }
+.evolution-list img { width: 46px; height: 46px; object-fit: contain; }
+.evolution-list button > span { font-size: 12px; font-weight: 600; }
+.evolution-list small { display: block; font-size: 7px; color: var(--muted); letter-spacing: .8px; margin-bottom: 3px; font-weight: 500; }
+.evolution-list svg { margin-left: auto; }
+.detail-page { max-width: 1000px; margin: 32px auto 55px; padding: 0 24px; }
+.detail-page > .pokemon-panel { border: 1px solid var(--line); border-radius: 15px; overflow: hidden; background: var(--surface); }
+.detail-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+.detail-nav > a { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 12px; }
