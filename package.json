@@ -1,49 +1,42 @@
 {
-  "name": "pokemon-app",
+  "name": "pokedex-field-guide",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "A beautifully crafted Pokémon field guide with 1,025 entries, type filters, shiny artwork, and collections.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PRABHMANNAT/Pokedex.git"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 127.0.0.1",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "test": "node --test tests/*.test.js",
+    "test:e2e": "playwright test",
+    "preview": "vite preview",
+    "data:sync": "node scripts/sync-catalog.mjs",
+    "format": "prettier --write src scripts tests *.js *.json *.html *.md .github"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^2.2.4",
-    "@chakra-ui/react": "^2.10.4",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "@radix-ui/react-icons": "^1.3.2",
-    "@radix-ui/react-slot": "^1.1.0",
-    "@tabler/icons-react": "^3.24.0",
-    "autoprefixer": "^10.4.20",
-    "axios": "^1.7.9",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "framer-motion": "^10.18.0",
     "lucide-react": "^0.468.0",
-    "postcss": "^8.4.49",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-icons": "^5.4.0",
-    "react-infinite-scroll-component": "^6.1.0",
-    "react-router-dom": "^7.0.2",
-    "react-snowfall": "^2.2.0",
-    "tailwind-merge": "^2.5.5",
-    "tailwindcss": "^3.4.16",
-    "use-sound": "^4.0.3"
+    "react-router-dom": "^7.18.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.4",
+    "@vitejs/plugin-react": "^6.1.2",
+    "@playwright/test": "^1.61.1",
     "eslint": "^9.15.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.12.0",
-    "vite": "^6.0.1"
+    "prettier": "^3.8.3",
+    "vite": "^8.3.3"
   }
 }
