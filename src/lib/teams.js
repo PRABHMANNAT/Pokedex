@@ -1,7 +1,7 @@
 import catalog from '../data/catalog.json' with { type: 'json' };
 import forms from '../data/pickForms.json' with { type: 'json' };
 import { DEVELOPER_GROUPS, DEVELOPER_PICKS, starterKeys } from '../data/developerPicks.js';
-import { defensiveMatchups, formatName } from './pokemon.js';
+import { defensiveMatchups, formatName, TYPES } from './pokemon.js';
 
 export const TEAM_SIZE = 6;
 export const MAX_TEAMS = 24;
@@ -67,7 +67,7 @@ export function teamInsights(keys) {
   return {
     types: [...new Set(roster.flatMap(member => member.types))],
     averageStats: roster.length ? Math.round(roster.reduce((sum, member) => sum + member.stats.reduce((a,b) => a+b, 0), 0) / roster.length) : 0,
-    sharedWeaknesses: Object.keys(defensiveMatchups(['normal']).reduce((map, item) => ({...map, [item.type]: true}), {})).map(type => ({ type, count: roster.filter(member => defensiveMatchups(member.types).find(matchup => matchup.type === type).multiplier > 1).length })).filter(item => item.count >= 3),
+    sharedWeaknesses: Object.keys(TYPES).map(type => ({ type, count: roster.filter(member => defensiveMatchups(member.types).find(matchup => matchup.type === type).multiplier > 1).length })).filter(item => item.count >= 3),
   };
 }
 export function parseSharedTeam(params) {

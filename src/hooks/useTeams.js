@@ -36,6 +36,6 @@ export default function useTeams() {
   };
   return {
     state, activeTeam, notice, storageAvailable, setNotice, dispatch, addMember, createTeam,
-    usePreset: group => createTeam(`Prabh’s ${group.name} six`, starterKeys(group), group.id),
+    applyPreset: group => createTeam(`Prabh’s ${group.name} six`, starterKeys(group), group.id),
   };
 }
