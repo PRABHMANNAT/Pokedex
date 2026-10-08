@@ -164,13 +164,18 @@ export default function TeamBuilder() {
               Your saved teams + all nine generations and Gigantamax.
             </small>
           </div>
-          <button
-            className="button button-primary create-team-button"
-            disabled={state.teams.length >= MAX_TEAMS}
-            onClick={() => setCreating((value) => !value)}
-          >
-            <Plus size={16} /> Create team
-          </button>
+          <div className="workbench-actions">
+            <Link className="button button-outlined all-teams-button" to="/teams/all">
+              View all generation teams <ArrowRight size={14} />
+            </Link>
+            <button
+              className="button button-primary create-team-button"
+              disabled={state.teams.length >= MAX_TEAMS}
+              onClick={() => setCreating((value) => !value)}
+            >
+              <Plus size={16} /> Create team
+            </button>
+          </div>
         </div>
         {creating && (
           <form

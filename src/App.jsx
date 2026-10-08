@@ -13,8 +13,10 @@ import './styles/detail.css';
 import './styles/responsive.css';
 import './styles/teams.css';
 import './styles/team-responsive.css';
+import './styles/team-gallery.css';
 
 const TeamBuilder = lazy(() => import('./components/TeamBuilder'));
+const TeamGallery = lazy(() => import('./components/TeamGallery'));
 const DeveloperPicks = lazy(() => import('./components/DeveloperPicks'));
 const PokemonList = lazy(() => import('./components/PokemonList'));
 const PokemonDetail = lazy(() => import('./components/PokemonDetail'));
@@ -40,6 +42,7 @@ export default function App() {
           >
             <Routes>
               <Route path="/teams" element={<TeamBuilder />} />
+              <Route path="/teams/all" element={<TeamGallery />} />
               <Route path="/picks" element={<DeveloperPicks />} />
               <Route
                 path="/"
